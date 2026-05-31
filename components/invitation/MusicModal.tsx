@@ -1,30 +1,6 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
-
-// YouTube IFrame API type
-declare global {
-  interface Window {
-    YT: {
-      Player: new (
-        elementId: string,
-        config: {
-          videoId: string
-          playerVars?: Record<string, number | string>
-          events?: {
-            onReady?: (event: { target: { playVideo: () => void; pauseVideo: () => void } }) => void
-          }
-        }
-      ) => {
-        playVideo: () => void
-        pauseVideo: () => void
-        destroy: () => void
-      }
-      PlayerState: { PLAYING: number }
-    }
-    onYouTubeIframeAPIReady: () => void
-  }
-}
+import { useState, useRef } from "react"
 
 const YOUTUBE_VIDEO_ID = "dvgZkm1xWPE"
 
@@ -75,58 +51,52 @@ function MusicModal({ onClose }: MusicModalProps) {
 export default function MusicController() {
   const [showModal, setShowModal] = useState(true)
   const [isPlaying, setIsPlaying] = useState(false)
-  const playerRef = useRef<{ playVideo: () => void; pauseVideo: () => void; destroy: () => void } | null>(null)
-  const apiLoadedRef = useRef(false)
+  const [iframeSrc, setIframeSrc] = useState("")
+  const iframeRef = useRef<HTMLIFrameElement>(null)
 
-  const loadYouTubeAPI = () => {
-    if (apiLoadedRef.current) return
-    apiLoadedRef.current = true
-
-    const tag = document.createElement("script")
-    tag.src = "https://www.youtube.com/iframe_api"
-    document.head.appendChild(tag)
-
-    window.onYouTubeIframeAPIReady = () => {
-      playerRef.current = new window.YT.Player("yt-player", {
-        videoId: YOUTUBE_VIDEO_ID,
-        playerVars: { autoplay: 1, loop: 1, playlist: YOUTUBE_VIDEO_ID, controls: 0 },
-        events: {
-          onReady: (e) => {
-            e.target.playVideo()
-            setIsPlaying(true)
-          },
-        },
-      })
-    }
-  }
+  const buildSrc = (autoplay: boolean) =>
+    `https://www.youtube-nocookie.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=${autoplay ? 1 : 0}&loop=1&playlist=${YOUTUBE_VIDEO_ID}&controls=0&mute=0&enablejsapi=0&rel=0`
 
   const handleModalClose = (withMusic: boolean) => {
     setShowModal(false)
     if (withMusic) {
-      loadYouTubeAPI()
+      setIframeSrc(buildSrc(true))
+      setIsPlaying(true)
     }
   }
 
   const toggleMusic = () => {
-    if (!apiLoadedRef.current) {
-      loadYouTubeAPI()
+    if (!iframeSrc) {
+      // First time enabling music after choosing "sin música"
+      setIframeSrc(buildSrc(true))
+      setIsPlaying(true)
       return
     }
-    if (!playerRef.current) return
-
     if (isPlaying) {
-      playerRef.current.pauseVideo()
+      // Pause: replace src with autoplay=0 to stop audio
+      setIframeSrc(buildSrc(false))
       setIsPlaying(false)
     } else {
-      playerRef.current.playVideo()
+      // Resume: reload with autoplay=1
+      setIframeSrc(buildSrc(true))
       setIsPlaying(true)
     }
   }
 
   return (
     <>
-      {/* Hidden YouTube player */}
-      <div id="yt-player" className="fixed -top-full -left-full w-1 h-1 opacity-0 pointer-events-none" aria-hidden="true" />
+      {/* Hidden YouTube embed iframe - rendered only when music is active */}
+      {iframeSrc && (
+        <iframe
+          ref={iframeRef}
+          src={iframeSrc}
+          allow="autoplay; encrypted-media"
+          className="fixed -top-full -left-full w-1 h-1 opacity-0 pointer-events-none"
+          aria-hidden="true"
+          title="Música de fondo"
+          sandbox="allow-scripts allow-same-origin allow-presentation"
+        />
+      )}
 
       {/* Welcome modal */}
       {showModal && <MusicModal onClose={handleModalClose} />}
