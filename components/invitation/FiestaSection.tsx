@@ -12,7 +12,7 @@ const FIESTA_CARDS = [
     ),
     desc: "¿Cuál es la canción que no debe faltar en la PlayList de la fiesta?",
     btnLabel: "Sugerir canción",
-    btnHref: "https://wa.me/549XXXXXXXXXX?text=Quiero+sugerir+una+cancion+para+los+XV+de+Julieta",
+    btnHref: "https://wa.me/5492494275937?text=Quiero+sugerir+una+canci%C3%B3n+para+la+playlist+de+los+XV+de+Julieta+%F0%9F%8E%B5",
     btnStyle: {},
   },
   {

@@ -26,8 +26,7 @@ declare global {
   }
 }
 
-// Placeholder: user will update with actual YouTube video ID
-const YOUTUBE_VIDEO_ID = "3AtDnEC4zak" // Placeholder romantic song
+const YOUTUBE_VIDEO_ID = "dvgZkm1xWPE"
 
 interface MusicModalProps {
   onClose: (withMusic: boolean) => void

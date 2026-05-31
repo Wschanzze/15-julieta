@@ -2,7 +2,7 @@ import ButterflyDivider from "./ButterflyDivider"
 
 export default function PartyDetailsSection() {
   const mapsUrl =
-    "https://www.google.com/maps/search/?api=1&query=Salon+de+Fiestas+Buenos+Aires"
+    "https://www.google.com/maps/search/?api=1&query=Juan+B.+Justo+488+Salón+Aoma"
 
   return (
     <section className="relative py-20 px-6 overflow-hidden">
@@ -40,16 +40,21 @@ export default function PartyDetailsSection() {
           {/* Venue */}
           <div className="w-full flex flex-col items-center gap-3 border-b border-[#c9a84c22] pb-6">
             <h6 className="text-xs tracking-[0.3em] uppercase text-muted-foreground">Lugar</h6>
-            <p className="text-base font-light text-foreground/90">Salon de fiestas</p>
-            <button className="btn-gold mt-1">
+            <p className="text-base font-light text-foreground/90">Salón Aoma</p>
+            <a
+              href="https://wa.me/5492494275937?text=Hola!+Confirmo+mi+asistencia+a+los+XV+de+Julieta+%F0%9F%8E%89"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-gold mt-1"
+            >
               Confirmar asistencia
-            </button>
+            </a>
           </div>
 
           {/* Address */}
           <div className="w-full flex flex-col items-center gap-3">
             <h6 className="text-xs tracking-[0.3em] uppercase text-muted-foreground">Dirección</h6>
-            <p className="text-base font-light text-foreground/90">Buenos Aires, Argentina</p>
+            <p className="text-base font-light text-foreground/90">Juan B. Justo 488</p>
             <a
               href={mapsUrl}
               target="_blank"
