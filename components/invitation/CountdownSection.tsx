@@ -48,12 +48,9 @@ export default function CountdownSection() {
   ]
 
   return (
-    <section className="relative py-20 px-6 overflow-hidden">
-      {/* Subtle dark gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0e0e0e88] via-transparent to-[#0e0e0e88] pointer-events-none" />
-
+    <section className="relative py-20 px-6 overflow-hidden section-tinted">
       <div className="relative z-10 flex flex-col items-center text-center">
-        <p className="text-lg sm:text-xl tracking-[0.25em] text-muted-foreground mb-10 uppercase font-light">
+        <p className="text-lg sm:text-xl tracking-[0.25em] text-[#5a7a5a] mb-10 uppercase font-light">
           Falta
         </p>
 
@@ -82,7 +79,7 @@ export default function CountdownSection() {
         </div>
       </div>
 
-      {/* Bottom butterfly divider */}
+      {/* Bottom botanical divider */}
       <div className="mt-16">
         <ButterflyDivider />
       </div>

@@ -12,20 +12,41 @@ function MusicModal({ onClose }: MusicModalProps) {
   return (
     <div className="music-modal-overlay" role="dialog" aria-modal="true" aria-label="Bienvenida">
       <div className="music-modal-box">
+        {/* Leaf corner decoration inside modal */}
+        <svg
+          className="absolute top-0 right-0 w-24 h-24 opacity-20 pointer-events-none"
+          viewBox="0 0 100 100"
+          fill="none"
+          aria-hidden="true"
+        >
+          <ellipse cx="70" cy="20" rx="18" ry="35" fill="#4a6e4a" transform="rotate(20 70 20)" />
+          <ellipse cx="90" cy="50" rx="12" ry="25" fill="#4a6e4a" transform="rotate(-15 90 50)" />
+          <line x1="75" y1="0" x2="75" y2="90" stroke="#b8962e" strokeWidth="1" opacity="0.6" />
+        </svg>
+        <svg
+          className="absolute bottom-0 left-0 w-20 h-20 opacity-15 pointer-events-none"
+          viewBox="0 0 100 100"
+          fill="none"
+          aria-hidden="true"
+        >
+          <ellipse cx="30" cy="80" rx="15" ry="30" fill="#4a6e4a" transform="rotate(-20 30 80)" />
+          <line x1="25" y1="100" x2="25" y2="30" stroke="#b8962e" strokeWidth="1" opacity="0.5" />
+        </svg>
+
         <div className="gold-line mb-6" />
 
-        <p className="text-sm tracking-[0.2em] uppercase text-muted-foreground mb-3 font-light">
+        <p className="text-sm tracking-[0.2em] uppercase text-[#5a7a5a] mb-3 font-light">
           Bienvenidos a la invitación de
         </p>
 
         <h2 className="text-4xl font-light gold-shimmer mb-2">Julieta</h2>
-        <p className="text-base tracking-[0.2em] font-light text-foreground/80 mb-6">
+        <p className="text-base tracking-[0.2em] font-light text-[#2d4a2d] mb-6">
           Mis XV años
         </p>
 
         <div className="gold-line mb-6" />
 
-        <p className="text-xs text-muted-foreground mb-8 font-light italic">
+        <p className="text-xs text-[#5a7a5a] mb-8 font-light italic">
           La música de fondo es parte de la experiencia
         </p>
 
@@ -67,17 +88,14 @@ export default function MusicController() {
 
   const toggleMusic = () => {
     if (!iframeSrc) {
-      // First time enabling music after choosing "sin música"
       setIframeSrc(buildSrc(true))
       setIsPlaying(true)
       return
     }
     if (isPlaying) {
-      // Pause: replace src with autoplay=0 to stop audio
       setIframeSrc(buildSrc(false))
       setIsPlaying(false)
     } else {
-      // Resume: reload with autoplay=1
       setIframeSrc(buildSrc(true))
       setIsPlaying(true)
     }
@@ -85,7 +103,6 @@ export default function MusicController() {
 
   return (
     <>
-      {/* Hidden YouTube embed iframe - rendered only when music is active */}
       {iframeSrc && (
         <iframe
           ref={iframeRef}
@@ -98,10 +115,8 @@ export default function MusicController() {
         />
       )}
 
-      {/* Welcome modal */}
       {showModal && <MusicModal onClose={handleModalClose} />}
 
-      {/* Floating music button */}
       {!showModal && (
         <button
           onClick={toggleMusic}

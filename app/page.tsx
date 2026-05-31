@@ -1,4 +1,4 @@
-import StarCanvas from "@/components/invitation/StarCanvas"
+import BotanicalBackground from "@/components/invitation/BotanicalBackground"
 import TopNav from "@/components/invitation/TopNav"
 import MusicController from "@/components/invitation/MusicModal"
 import HeroSection from "@/components/invitation/HeroSection"
@@ -14,8 +14,8 @@ import FooterSection from "@/components/invitation/FooterSection"
 export default function InvitationPage() {
   return (
     <main className="relative min-h-screen bg-background overflow-x-hidden">
-      {/* Animated starry background */}
-      <StarCanvas />
+      {/* Botanical background */}
+      <BotanicalBackground />
 
       {/* Fixed elements */}
       <TopNav />

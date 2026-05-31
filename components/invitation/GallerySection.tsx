@@ -4,7 +4,6 @@ import { useState } from "react"
 import Image from "next/image"
 import ButterflyDivider from "./ButterflyDivider"
 
-// Placeholder photos - will be replaced with real photos later
 const PHOTOS = [
   { src: "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=400&h=400&fit=crop", alt: "Foto 1" },
   { src: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=400&h=400&fit=crop", alt: "Foto 2" },
@@ -21,11 +20,11 @@ export default function GallerySection() {
       <div className="relative z-10">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-light tracking-wide text-foreground mb-3">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-light tracking-wide text-[#2d4a2d] mb-3">
             Un recorrido de estos 15 años
           </h2>
           <div className="gold-line my-5" />
-          <p className="text-base font-light text-muted-foreground italic">
+          <p className="text-base font-light text-[#5a7a5a] italic">
             Junto a personas que son muy importantes en mi vida
           </p>
 
@@ -36,7 +35,7 @@ export default function GallerySection() {
               height="40"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#c9a84c"
+              stroke="#b8962e"
               strokeWidth="1"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -49,13 +48,13 @@ export default function GallerySection() {
           </div>
         </div>
 
-        {/* Photo carousel - horizontal scroll on mobile, grid on desktop */}
-        <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide md:flex-wrap md:justify-center md:overflow-visible">
+        {/* Photo carousel */}
+        <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory md:flex-wrap md:justify-center md:overflow-visible">
           {PHOTOS.map((photo, i) => (
             <button
               key={i}
               onClick={() => setActiveIdx(i)}
-              className={`polaroid flex-shrink-0 snap-center w-44 h-52 md:w-40 md:h-48 overflow-hidden cursor-pointer focus:outline-none`}
+              className="polaroid flex-shrink-0 snap-center w-44 h-52 md:w-40 md:h-48 overflow-hidden cursor-pointer focus:outline-none"
               style={{ transform: i % 2 === 0 ? "rotate(-2deg)" : "rotate(2deg)" }}
               aria-label={`Ver foto ${i + 1}`}
             >
@@ -76,7 +75,7 @@ export default function GallerySection() {
       {/* Lightbox */}
       {activeIdx !== null && (
         <div
-          className="fixed inset-0 bg-black/95 z-[300] flex items-center justify-center p-4"
+          className="fixed inset-0 bg-white/95 z-[300] flex items-center justify-center p-4"
           onClick={() => setActiveIdx(null)}
           role="dialog"
           aria-modal="true"
@@ -92,10 +91,10 @@ export default function GallerySection() {
             />
             <button
               onClick={() => setActiveIdx(null)}
-              className="absolute top-2 right-2 text-white text-xl bg-black/60 rounded-full w-8 h-8 flex items-center justify-center"
+              className="absolute top-2 right-2 text-[#2d4a2d] text-xl bg-white/80 rounded-full w-8 h-8 flex items-center justify-center border border-[#b8962e44]"
               aria-label="Cerrar foto"
             >
-              ×
+              &times;
             </button>
           </div>
         </div>

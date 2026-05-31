@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'Julieta | Mis XV años',
   description: 'Invitación a los XV años de Julieta - 17 de Julio',
-  themeColor: '#080808',
+  themeColor: '#fafafa',
 }
 
 export default function RootLayout({
