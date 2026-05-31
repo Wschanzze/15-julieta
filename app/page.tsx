@@ -1,36 +1,58 @@
-export default function Page() {
-  return (
-    <main className="flex min-h-screen items-center justify-center bg-black px-6 text-neutral-400">
-      <div className="flex w-full max-w-md flex-col items-start gap-8">
-        <svg
-          fill="currentColor"
-          viewBox="0 0 147 70"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-          className="size-10 text-white"
-        >
-          <path d="M56 50.2031V14H70V60.1562C70 65.5928 65.5928 70 60.1562 70C57.5605 70 54.9982 68.9992 53.1562 67.1573L0 14H19.7969L56 50.2031Z" />
-          <path d="M147 56H133V23.9531L100.953 56H133V70H96.6875C85.8144 70 77 61.1856 77 50.3125V14H91V46.1562L123.156 14H91V0H127.312C138.186 0 147 8.81439 147 19.6875V56Z" />
-        </svg>
+import StarCanvas from "@/components/invitation/StarCanvas"
+import TopNav from "@/components/invitation/TopNav"
+import MusicController from "@/components/invitation/MusicModal"
+import HeroSection from "@/components/invitation/HeroSection"
+import CountdownSection from "@/components/invitation/CountdownSection"
+import GuestSection from "@/components/invitation/GuestSection"
+import PartyDetailsSection from "@/components/invitation/PartyDetailsSection"
+import ConfirmationSection from "@/components/invitation/ConfirmationSection"
+import GallerySection from "@/components/invitation/GallerySection"
+import FiestaSection from "@/components/invitation/FiestaSection"
+import GiftsSection from "@/components/invitation/GiftsSection"
+import FooterSection from "@/components/invitation/FooterSection"
 
-        <div className="space-y-3">
-          <h1 className="text-balance text-2xl font-semibold tracking-tight text-white">
-            To get started, describe what you want to build.
-          </h1>
-          <p className="text-pretty text-sm leading-relaxed text-neutral-500">
-            This is the default page for a fresh v0 project. Open the prompt and
-            tell v0 what to create, or browse the{' '}
-            <a
-              href="https://v0.app/templates"
-              target="_blank"
-              rel="noreferrer"
-              className="text-neutral-300 underline underline-offset-4 hover:text-white"
-            >
-              Community
-            </a>{' '}
-            for inspiration.
-          </p>
-        </div>
+export default function InvitationPage() {
+  return (
+    <main className="relative min-h-screen bg-background overflow-x-hidden">
+      {/* Animated starry background */}
+      <StarCanvas />
+
+      {/* Fixed elements */}
+      <TopNav />
+      <MusicController />
+
+      {/* Invitation content */}
+      <div className="relative z-10">
+        {/* 1. Hero / portada */}
+        <HeroSection />
+
+        {/* 2. Countdown */}
+        <CountdownSection />
+
+        {/* 3. Guests */}
+        <GuestSection />
+
+        {/* 4. Party details card */}
+        <PartyDetailsSection />
+
+        {/* 5. Attendance confirmation */}
+        <section id="confirmacion">
+          <ConfirmationSection />
+        </section>
+
+        {/* 6. Gallery */}
+        <GallerySection />
+
+        {/* 7. Fiesta info cards */}
+        <section id="fiesta">
+          <FiestaSection />
+        </section>
+
+        {/* 8. Gifts */}
+        <GiftsSection />
+
+        {/* 9. Footer */}
+        <FooterSection />
       </div>
     </main>
   )
