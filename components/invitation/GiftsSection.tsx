@@ -2,13 +2,13 @@ import ButterflyDivider from "./ButterflyDivider"
 
 export default function GiftsSection() {
   return (
-    <section className="relative py-20 px-6 overflow-hidden">
+    <section className="relative py-14 px-6 overflow-hidden">
       <div className="relative z-10 flex flex-col items-center text-center">
         <h2 className="heading-display mb-4" style={{ fontSize: "clamp(2rem, 5vw, 3rem)" }}>
           Regalos
         </h2>
-        <div className="gold-line my-5" />
-        <p className="body-text text-lg italic mb-10 text-[#4a7a4a]">
+        <div className="gold-line my-4" />
+        <p className="body-text text-lg italic mb-8 text-[#4a7a4a]">
           Si deseás regalarme algo más que tu hermosa presencia...
         </p>
 
@@ -27,7 +27,7 @@ export default function GiftsSection() {
         </button>
       </div>
 
-      <div className="mt-16">
+      <div className="mt-10">
         <ButterflyDivider />
       </div>
     </section>

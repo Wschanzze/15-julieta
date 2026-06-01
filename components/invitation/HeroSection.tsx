@@ -9,7 +9,7 @@ export default function HeroSection() {
       <div className="sparkle" style={{ bottom: '40%', left: '25%', animationDelay: '2s' }} />
       <div className="sparkle" style={{ top: '60%', right: '15%', animationDelay: '1.5s' }} />
       
-      <div className="flex-1 flex flex-col items-center justify-center text-center px-6 pt-28 pb-8 z-10 relative">
+      <div className="flex-1 flex flex-col items-center justify-center text-center px-6 pt-20 pb-6 z-10 relative">
         {/* Date */}
         <p className="label-text text-sm mb-6">
           17.07.2026
@@ -49,7 +49,7 @@ export default function HeroSection() {
         </p>
       </div>
 
-      <div className="relative z-10 mt-8">
+      <div className="relative z-10 mt-6">
         <ButterflyDivider />
       </div>
     </section>

@@ -84,14 +84,14 @@ const FIESTA_CARDS = [
 
 export default function FiestaSection() {
   return (
-    <section id="fiesta" className="relative py-28 px-6 overflow-visible">
+    <section id="fiesta" className="relative py-16 px-6 overflow-visible">
       {/* Top divider */}
       <div className="mb-4">
         <ButterflyDivider />
       </div>
 
       {/* Section header */}
-      <div className="text-center mb-20 mt-10">
+      <div className="text-center mb-12 mt-8">
         <p
           className="label-text mb-5"
           style={{ letterSpacing: "0.3em", fontSize: "0.75rem" }}

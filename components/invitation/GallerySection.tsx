@@ -40,10 +40,10 @@ export default function GallerySection() {
   const [activeIdx, setActiveIdx] = useState<number | null>(null)
 
   return (
-    <section className="relative py-24 px-6 overflow-hidden">
+    <section className="relative py-14 px-6 overflow-hidden">
       <div className="relative z-10">
 
-        <div className="text-center mb-14">
+        <div className="text-center mb-10">
           <h2 className="heading-display mb-4" style={{ fontSize: "clamp(1.8rem, 5vw, 3rem)" }}>
             La protagonista de esta historia
           </h2>
@@ -131,7 +131,7 @@ export default function GallerySection() {
         </div>
       )}
 
-      <div className="mt-16">
+      <div className="mt-10">
         <ButterflyDivider />
       </div>
     </section>

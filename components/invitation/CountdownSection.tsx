@@ -42,7 +42,7 @@ export default function CountdownSection() {
   ]
 
   return (
-    <section className="relative py-20 px-6 text-center overflow-hidden">
+    <section className="relative py-12 px-6 text-center overflow-hidden">
 
       {/* Section heading */}
       <p
@@ -177,7 +177,7 @@ export default function CountdownSection() {
         </span>
       </div>
 
-      <div className="mt-16">
+      <div className="mt-10">
         <ButterflyDivider />
       </div>
     </section>

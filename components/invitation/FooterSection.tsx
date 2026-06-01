@@ -1,7 +1,7 @@
 export default function FooterSection() {
   return (
-    <footer className="relative py-14 px-6 text-center z-10">
-      <div className="gold-line mb-8" />
+    <footer className="relative py-10 px-6 text-center z-10">
+      <div className="gold-line mb-6" />
 
       <p
         className="heading-serif mb-1"
@@ -10,7 +10,7 @@ export default function FooterSection() {
         Julieta
       </p>
       <p
-        className="label-text mb-8"
+        className="label-text mb-6"
         style={{ color: "#4a7a4a", opacity: 0.8 }}
       >
         Mis XV años &mdash; 17 de Julio 2025

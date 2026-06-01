@@ -2,15 +2,15 @@ import ButterflyDivider from "./ButterflyDivider"
 
 export default function ConfirmationSection() {
   return (
-    <section id="confirmacion" className="relative py-24 px-6 overflow-hidden section-tinted">
+    <section id="confirmacion" className="relative py-14 px-6 overflow-hidden section-tinted">
       <div className="relative z-10 flex flex-col items-center text-center">
         <h2 className="heading-display mb-4" style={{ fontSize: "clamp(2rem, 5.5vw, 3.2rem)" }}>
           Confirmación de asistencia
         </h2>
 
-        <div className="gold-line my-5" />
+        <div className="gold-line my-4" />
 
-        <p className="body-text italic mb-12" style={{ fontSize: "1.1rem", color: "#4a7a4a" }}>
+        <p className="body-text italic mb-8" style={{ fontSize: "1.1rem", color: "#4a7a4a" }}>
           Es importante que confirmes tu asistencia
         </p>
 
@@ -25,7 +25,7 @@ export default function ConfirmationSection() {
         </a>
       </div>
 
-      <div className="mt-16">
+      <div className="mt-10">
         <ButterflyDivider />
       </div>
     </section>

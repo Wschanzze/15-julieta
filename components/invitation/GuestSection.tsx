@@ -2,7 +2,7 @@ import ButterflyDivider from "./ButterflyDivider"
 
 export default function GuestSection() {
   return (
-    <section className="relative py-16 px-6 overflow-hidden">
+    <section className="relative py-10 px-6 overflow-hidden">
       <div className="relative z-10 flex flex-col items-center text-center max-w-lg mx-auto">
         <p
           className="body-text italic"
@@ -11,7 +11,7 @@ export default function GuestSection() {
           Nos encanta compartir este momento con vos. ¡Te esperamos!
         </p>
       </div>
-      <div className="mt-12">
+      <div className="mt-8">
         <ButterflyDivider />
       </div>
     </section>

@@ -5,7 +5,7 @@ export default function PartyDetailsSection() {
     "https://www.google.com/maps/search/?api=1&query=Juan+B.+Justo+488+Salón+Aoma"
 
   return (
-    <section className="relative py-24 px-6 overflow-hidden section-tinted">
+    <section className="relative py-14 px-6 overflow-hidden section-tinted">
       <div className="relative z-10 flex justify-center">
         <div className="glass-card w-full max-w-sm p-10 flex flex-col items-center text-center gap-8 rounded-3xl">
 
@@ -63,7 +63,7 @@ export default function PartyDetailsSection() {
         </div>
       </div>
 
-      <div className="mt-16">
+      <div className="mt-10">
         <ButterflyDivider />
       </div>
     </section>
