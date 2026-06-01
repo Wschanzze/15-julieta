@@ -33,9 +33,9 @@ export default function HeroSection() {
 
         <div className="gold-line mb-6 shine-effect" />
 
-        {/* Subtitle con gradiente premium */}
+        {/* Subtitle */}
         <p
-          className="gradient-text-premium mb-10 font-semibold tracking-[0.25em]"
+          className="text-[#2d5a2d] mb-10 font-semibold tracking-[0.25em]"
           style={{ fontSize: "clamp(1.3rem, 3.5vw, 2rem)", fontFamily: "var(--font-playfair), 'Playfair Display', serif" }}
         >
           Mis XV años
