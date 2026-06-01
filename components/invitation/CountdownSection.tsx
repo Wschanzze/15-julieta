@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react"
 import ButterflyDivider from "./ButterflyDivider"
 
-// 17 de julio de 2025 a las 21:00 hs Argentina (UTC-3)
-const EVENT_TIMESTAMP = new Date("2025-07-17T21:00:00.000-03:00").getTime()
+// 17 de julio de 2026 a las 21:00 hs Argentina (UTC-3)
+const EVENT_TIMESTAMP = new Date("2026-07-17T21:00:00.000-03:00").getTime()
 
 function calcTimeLeft() {
   const diff = EVENT_TIMESTAMP - Date.now()
@@ -111,11 +111,13 @@ export default function CountdownSection() {
                 <span
                   style={{
                     fontFamily: "var(--font-playfair), 'Playfair Display', serif",
-                    fontSize: "clamp(3rem, 10vw, 5.5rem)",
-                    fontWeight: 700,
+                    fontSize: "clamp(3.2rem, 11vw, 6.5rem)",
+                    fontWeight: 800,
                     color: "#2d5a2d",
-                    lineHeight: 1,
+                    lineHeight: 0.9,
                     display: "block",
+                    letterSpacing: "-0.04em",
+                    textShadow: "0 2px 4px rgba(45, 90, 45, 0.08), 0 0 20px rgba(184, 150, 46, 0.1)",
                   }}
                 >
                   {String(unit.value).padStart(2, "0")}
