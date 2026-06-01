@@ -5,9 +5,9 @@ export default function PartyDetailsSection() {
     "https://www.google.com/maps/search/?api=1&query=Juan+B.+Justo+488+Salón+Aoma"
 
   return (
-    <section className="relative py-14 px-6 overflow-hidden section-tinted">
+    <section className="relative py-14 px-4 sm:px-6 overflow-hidden section-tinted">
       <div className="relative z-10 flex justify-center">
-        <div className="glass-card w-full max-w-sm p-10 flex flex-col items-center text-center gap-8 rounded-3xl">
+        <div className="glass-card w-full max-w-sm p-6 sm:p-10 flex flex-col items-center text-center gap-6 sm:gap-8 rounded-3xl">
 
           {/* Icon con efecto glow */}
           <div className="glow-gold rounded-full p-4" style={{ color: "#b8962e" }}>
@@ -21,41 +21,41 @@ export default function PartyDetailsSection() {
             </svg>
           </div>
 
-          <h2 className="heading-display gradient-text-premium" style={{ fontSize: "clamp(2rem, 5vw, 2.8rem)" }}>
+          <h2 className="heading-display gradient-text-premium" style={{ fontSize: "clamp(1.8rem, 5vw, 2.8rem)" }}>
             Fiesta
           </h2>
 
           {/* Day */}
-          <div className="w-full flex flex-col items-center gap-3 border-b border-[#b8962e33] pb-7">
-            <p className="label-text">Día</p>
-            <p className="body-text font-bold" style={{ fontSize: "1.1rem" }}>
+          <div className="w-full flex flex-col items-center gap-2 sm:gap-3 border-b border-[#b8962e33] pb-5 sm:pb-7">
+            <p className="label-text text-xs sm:text-sm">Día</p>
+            <p className="body-text font-bold text-center px-2" style={{ fontSize: "clamp(0.95rem, 3vw, 1.1rem)" }}>
               Viernes <span className="text-[#b8962e]">17</span> de Julio &mdash; 21hs
             </p>
           </div>
 
           {/* Venue */}
-          <div className="w-full flex flex-col items-center gap-3 border-b border-[#b8962e33] pb-7">
-            <p className="label-text">Lugar</p>
-            <p className="body-text font-bold" style={{ fontSize: "1.1rem" }}>Salón Aoma</p>
+          <div className="w-full flex flex-col items-center gap-2 sm:gap-3 border-b border-[#b8962e33] pb-5 sm:pb-7">
+            <p className="label-text text-xs sm:text-sm">Lugar</p>
+            <p className="body-text font-bold" style={{ fontSize: "clamp(0.95rem, 3vw, 1.1rem)" }}>Salón Aoma</p>
             <a
               href="https://wa.me/5492494275937?text=Hola!+Confirmo+mi+asistencia+a+los+XV+de+Julieta+%F0%9F%8E%89"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-premium mt-2 ripple-effect"
+              className="btn-premium mt-2 text-sm sm:text-base ripple-effect"
             >
               Confirmar asistencia
             </a>
           </div>
 
           {/* Address */}
-          <div className="w-full flex flex-col items-center gap-3">
-            <p className="label-text">Dirección</p>
-            <p className="body-text font-bold" style={{ fontSize: "1.1rem" }}>Juan B. Justo 488</p>
+          <div className="w-full flex flex-col items-center gap-2 sm:gap-3">
+            <p className="label-text text-xs sm:text-sm">Dirección</p>
+            <p className="body-text font-bold" style={{ fontSize: "clamp(0.95rem, 3vw, 1.1rem)" }}>Juan B. Justo 488</p>
             <a
               href={mapsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-premium mt-2 ripple-effect"
+              className="btn-premium mt-2 text-sm sm:text-base ripple-effect"
             >
               ¿Cómo llegar?
             </a>

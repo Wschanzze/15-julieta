@@ -113,7 +113,7 @@
    GOLD ACCENTS
    ======================== */
 .gold-line {
-  width: 180px;
+  width: clamp(120px, 40vw, 180px);
   height: 1.5px;
   background: linear-gradient(to right, transparent, #b8962e, transparent);
   margin: 0 auto;
@@ -224,7 +224,7 @@
   border-radius: 2rem;
   padding: 0.625rem 2rem;
   font-family: var(--font-lato), 'Lato', sans-serif;
-  font-size: 0.9rem;
+  font-size: clamp(0.85rem, 2.5vw, 0.9rem);
   font-weight: 700;
   letter-spacing: 0.06em;
   cursor: pointer;
@@ -246,7 +246,7 @@
   border-radius: 2rem;
   padding: 0.625rem 2rem;
   font-family: var(--font-lato), 'Lato', sans-serif;
-  font-size: 0.9rem;
+  font-size: clamp(0.85rem, 2.5vw, 0.9rem);
   font-weight: 700;
   letter-spacing: 0.06em;
   cursor: pointer;
@@ -266,10 +266,10 @@
    ======================== */
 .music-btn {
   position: fixed;
-  top: 1.25rem;
-  right: 1.25rem;
-  width: 50px;
-  height: 50px;
+  top: 1rem;
+  right: 1rem;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.95);
   border: 1.5px solid rgba(184, 150, 46, 0.5);
@@ -282,6 +282,15 @@
   transition: all 0.3s ease;
   backdrop-filter: blur(8px);
   box-shadow: 0 2px 16px rgba(45, 90, 45, 0.15);
+}
+
+@media (min-width: 640px) {
+  .music-btn {
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 50px;
+    height: 50px;
+  }
 }
 
 .music-btn:hover {
@@ -559,9 +568,9 @@
   border: 2px solid transparent;
   background-clip: padding-box;
   border-radius: 2rem;
-  padding: 0.75rem 2.5rem;
+  padding: 0.65rem 2rem;
   font-family: var(--font-lato), 'Lato', sans-serif;
-  font-size: 0.95rem;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
   font-weight: 700;
   letter-spacing: 0.08em;
   color: #2d5a2d;
@@ -589,6 +598,14 @@
   box-shadow: 0 8px 24px rgba(184, 150, 46, 0.25);
 }
 
+/* Mobile adjustments */
+@media (max-width: 640px) {
+  .btn-premium {
+    padding: 0.6rem 1.5rem;
+    letter-spacing: 0.06em;
+  }
+}
+
 /* Floating animation */
 @keyframes floating {
   0%, 100% { transform: translateY(0px); }
@@ -599,7 +616,9 @@
   animation: floating 3s ease-in-out infinite;
 }
 
-/* Sparkle effect */
+/* ========================
+   SPARKLE EFFECT
+   ======================== */
 @keyframes sparkle {
   0%, 100% { opacity: 0; transform: scale(0); }
   50% { opacity: 1; transform: scale(1); }
@@ -607,12 +626,19 @@
 
 .sparkle {
   position: absolute;
-  width: 6px;
-  height: 6px;
+  width: 4px;
+  height: 4px;
   background: radial-gradient(circle, #d4b96a, transparent);
   border-radius: 50%;
   animation: sparkle 2s ease-in-out infinite;
   pointer-events: none;
+}
+
+@media (min-width: 640px) {
+  .sparkle {
+    width: 6px;
+    height: 6px;
+  }
 }
 
 /* Text shadow premium */

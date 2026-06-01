@@ -42,7 +42,7 @@ export default function CountdownSection() {
   ]
 
   return (
-    <section className="relative py-12 px-6 text-center overflow-hidden">
+    <section className="relative py-12 px-4 sm:px-6 text-center overflow-hidden">
 
       {/* Section heading */}
       <p
@@ -53,7 +53,7 @@ export default function CountdownSection() {
           letterSpacing: "0.22em",
           textTransform: "uppercase",
           color: "#b8962e",
-          marginBottom: "2.5rem",
+          marginBottom: "1.5rem",
         }}
       >
         Faltan
@@ -88,16 +88,16 @@ export default function CountdownSection() {
         </div>
       ) : (
         /* Live countdown */
-        <div className="flex justify-center items-start gap-2 sm:gap-8 flex-wrap">
+        <div className="flex justify-center items-start gap-1 sm:gap-4 md:gap-8 flex-wrap max-w-full px-2">
           {units.map((unit, i) => (
-            <div key={unit.label} className="flex items-start gap-2 sm:gap-8">
+            <div key={unit.label} className="flex items-start gap-1 sm:gap-4 md:gap-8">
 
-              <div className="flex flex-col items-center min-w-[3rem] sm:min-w-[5rem]">
+              <div className="flex flex-col items-center min-w-[2.5rem] sm:min-w-[3.5rem] md:min-w-[5rem]">
                 {/* Number */}
                 <span
                   style={{
                     fontFamily: "var(--font-playfair), 'Playfair Display', serif",
-                    fontSize: "clamp(3.2rem, 11vw, 6.5rem)",
+                    fontSize: "clamp(2.5rem, 11vw, 6.5rem)",
                     fontWeight: 800,
                     color: "#2d5a2d",
                     lineHeight: 0.9,
@@ -112,12 +112,12 @@ export default function CountdownSection() {
                 <span
                   style={{
                     fontFamily: "var(--font-lato), 'Lato', sans-serif",
-                    fontSize: "0.65rem",
+                    fontSize: "0.55rem",
                     fontWeight: 700,
-                    letterSpacing: "0.18em",
+                    letterSpacing: "0.15em",
                     textTransform: "uppercase",
                     color: "#b8962e",
-                    marginTop: "0.5rem",
+                    marginTop: "0.4rem",
                   }}
                 >
                   {unit.label}
@@ -130,7 +130,7 @@ export default function CountdownSection() {
                   aria-hidden="true"
                   style={{
                     color: "#b8962e",
-                    fontSize: "clamp(2rem, 6vw, 3.5rem)",
+                    fontSize: "clamp(1.5rem, 6vw, 3.5rem)",
                     lineHeight: 1,
                     marginTop: "0.15em",
                     opacity: 0.6,

@@ -87,13 +87,13 @@ export default function GiftsSection() {
           aria-label="Información de regalos"
         >
           <div
-            className="relative w-full max-w-lg"
+            className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto"
             style={{
               background: "#fffefb",
               borderRadius: "1.5rem",
               border: "2px solid rgba(184, 150, 46, 0.3)",
               boxShadow: "0 20px 60px rgba(45, 90, 45, 0.3), 0 0 0 1px rgba(184,150,46,0.2)",
-              padding: "2.5rem 2rem",
+              padding: "2rem 1.5rem",
             }}
             onClick={(e) => e.stopPropagation()}
           >
@@ -114,10 +114,10 @@ export default function GiftsSection() {
 
             {/* Texto principal */}
             <p 
-              className="text-center mb-8 leading-relaxed"
+              className="text-center mb-6 sm:mb-8 leading-relaxed px-2"
               style={{
                 fontFamily: "var(--font-lato), 'Lato', sans-serif",
-                fontSize: "1.1rem",
+                fontSize: "clamp(0.95rem, 3vw, 1.1rem)",
                 color: "#2d5a2d",
                 fontWeight: 500
               }}
@@ -127,7 +127,7 @@ export default function GiftsSection() {
 
             {/* Divisor dorado */}
             <div 
-              className="mx-auto mb-8"
+              className="mx-auto mb-6 sm:mb-8"
               style={{
                 width: "80px",
                 height: "1.5px",
@@ -136,27 +136,29 @@ export default function GiftsSection() {
             />
 
             {/* Logo Mercado Pago */}
-            <div className="flex justify-center mb-6">
-              <MercadoPagoIcon />
+            <div className="flex justify-center mb-5 sm:mb-6">
+              <div className="scale-75 sm:scale-100">
+                <MercadoPagoIcon />
+              </div>
             </div>
 
             {/* Información de transferencia */}
             <div 
-              className="text-center mb-8"
+              className="text-center mb-6 sm:mb-8 px-2"
               style={{
                 fontFamily: "var(--font-lato), 'Lato', sans-serif",
                 color: "#4a7a4a",
                 lineHeight: "1.8"
               }}
             >
-              <p className="mb-4" style={{ fontSize: "1rem", fontWeight: 500 }}>
+              <p className="mb-3 sm:mb-4" style={{ fontSize: "clamp(0.9rem, 2.5vw, 1rem)", fontWeight: 500 }}>
                 Si preferís podés transferir a la siguiente cuenta:
               </p>
               
-              <div style={{ fontSize: "0.95rem" }}>
-                <p><strong style={{ color: "#2d5a2d" }}>Titular:</strong> Juan de la Palotes</p>
-                <p><strong style={{ color: "#2d5a2d" }}>Alias:</strong> transferime.a.esa.cuenta</p>
-                <p>
+              <div style={{ fontSize: "clamp(0.85rem, 2.5vw, 0.95rem)" }}>
+                <p className="break-words"><strong style={{ color: "#2d5a2d" }}>Titular:</strong> Juan de la Palotes</p>
+                <p className="break-words"><strong style={{ color: "#2d5a2d" }}>Alias:</strong> transferime.a.esa.cuenta</p>
+                <p className="break-words">
                   <strong style={{ color: "#2d5a2d" }}>CBU:</strong>{" "}
                   <span style={{ color: "#009EE3", fontWeight: 600 }}>03030456</span>
                 </p>
@@ -164,13 +166,13 @@ export default function GiftsSection() {
             </div>
 
             {/* Info icon */}
-            <div className="flex justify-center mb-6">
+            <div className="flex justify-center mb-5 sm:mb-6">
               <div 
-                className="w-8 h-8 rounded-full flex items-center justify-center"
+                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center"
                 style={{
                   border: "2px solid #b8962e",
                   color: "#b8962e",
-                  fontSize: "1.2rem",
+                  fontSize: "1.1rem",
                   fontWeight: 700
                 }}
               >
@@ -182,12 +184,12 @@ export default function GiftsSection() {
             <div className="flex justify-center">
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="px-10 py-3 rounded-lg transition-all"
+                className="px-8 sm:px-10 py-2.5 sm:py-3 rounded-lg transition-all"
                 style={{
                   background: "#2d5a2d",
                   color: "#fff",
                   fontFamily: "var(--font-lato), 'Lato', sans-serif",
-                  fontSize: "1rem",
+                  fontSize: "clamp(0.9rem, 2.5vw, 1rem)",
                   fontWeight: 600,
                   border: "none",
                   boxShadow: "0 4px 12px rgba(45, 90, 45, 0.3)",
