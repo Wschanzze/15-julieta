@@ -31,14 +31,7 @@ export default function PartyDetailsSection() {
             <p className="body-text font-bold" style={{ fontSize: "1.1rem" }}>
               Jueves <span className="text-[#b8962e]">17</span> de Julio &mdash; 21hs
             </p>
-            <a
-              href="https://calendar.google.com/calendar/r/eventedit?text=XV+de+Julieta&dates=20250717T210000/20250718T030000&details=Fiesta+de+XV+de+Julieta&ctz=America/Argentina/Buenos_Aires"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-gold mt-2"
-            >
-              Agendar
-            </a>
+
           </div>
 
           {/* Venue */}

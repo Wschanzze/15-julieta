@@ -11,10 +11,16 @@ export default function HeroSection() {
 
         <div className="gold-line mb-6" />
 
-        {/* Name — gold shimmer, large */}
+        {/* Name — gold shimmer, Cormorant italic romantico */}
         <h1
           className="gold-shimmer leading-none mb-4"
-          style={{ fontSize: "clamp(4.5rem, 15vw, 10rem)", fontWeight: 700 }}
+          style={{
+            fontSize: "clamp(5rem, 18vw, 11rem)",
+            fontWeight: 400,
+            fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif",
+            fontStyle: "italic",
+            letterSpacing: "0.04em",
+          }}
         >
           Julieta
         </h1>

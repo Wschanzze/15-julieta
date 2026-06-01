@@ -174,12 +174,12 @@
   box-shadow: 0 4px 32px rgba(45, 90, 45, 0.08);
 }
 
-/* Fiesta cards: green background, white text, gold details */
+/* Fiesta cards: white background, green text, gold icon details */
 .fiesta-card {
-  background: #2d5a2d;
-  border: 1.5px solid rgba(184, 150, 46, 0.4);
+  background: #ffffff;
+  border: 2px solid rgba(45, 90, 45, 0.25);
   border-radius: 1.25rem;
-  box-shadow: 0 4px 24px rgba(45, 90, 45, 0.18);
+  box-shadow: 0 4px 24px rgba(45, 90, 45, 0.10);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 

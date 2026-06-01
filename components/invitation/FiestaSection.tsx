@@ -62,12 +62,13 @@ export default function FiestaSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
           {FIESTA_CARDS.map((card) => (
             <div key={card.title} className="fiesta-card p-8 flex flex-col items-center text-center gap-6">
-              {/* Title: white */}
+              {/* Title: green */}
               <h3
-                className="font-bold tracking-wide text-white"
+                className="font-bold tracking-wide"
                 style={{
                   fontFamily: "var(--font-playfair), 'Playfair Display', serif",
                   fontSize: "clamp(1.3rem, 3vw, 1.6rem)",
+                  color: "#2d5a2d",
                 }}
               >
                 {card.title}
@@ -76,18 +77,18 @@ export default function FiestaSection() {
               {/* Icon: gold */}
               <div>{card.icon}</div>
 
-              {/* Description: white/80 */}
-              <p className="leading-relaxed flex-1 text-white/80 font-normal"
-                 style={{ fontFamily: "var(--font-lato)", fontSize: "0.95rem" }}>
+              {/* Description: green */}
+              <p className="leading-relaxed flex-1 font-normal"
+                 style={{ fontFamily: "var(--font-lato)", fontSize: "0.95rem", color: "#4a7a4a" }}>
                 {card.desc}
               </p>
 
-              {/* Button: white border, white text, gold on hover */}
+              {/* Button: green border, green text, gold on hover */}
               <a
                 href={card.btnHref}
                 target={card.btnHref.startsWith("http") ? "_blank" : undefined}
                 rel={card.btnHref.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="btn-gold-white w-full"
+                className="btn-gold w-full"
               >
                 {card.btnLabel}
               </a>
