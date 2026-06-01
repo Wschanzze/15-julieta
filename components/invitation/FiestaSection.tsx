@@ -4,7 +4,7 @@ const FIESTA_CARDS = [
   {
     title: "Música",
     icon: (
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#b8962e" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#d4b96a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M9 18V5l12-2v13" />
         <circle cx="6" cy="18" r="3" />
         <circle cx="18" cy="16" r="3" />
@@ -17,7 +17,7 @@ const FIESTA_CARDS = [
   {
     title: "Dress Code",
     icon: (
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#b8962e" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#d4b96a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z" />
       </svg>
     ),
@@ -28,7 +28,7 @@ const FIESTA_CARDS = [
   {
     title: "Tips y Notas",
     icon: (
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#b8962e" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#d4b96a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M9 11l3 3L22 4" />
         <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
       </svg>
@@ -41,43 +41,53 @@ const FIESTA_CARDS = [
 
 export default function FiestaSection() {
   return (
-    <section className="relative py-20 px-6 overflow-hidden section-tinted">
+    <section id="fiesta" className="relative py-24 px-6 overflow-hidden">
       <div className="relative z-10">
+
         <div className="mb-6">
           <ButterflyDivider />
         </div>
 
-        <div className="text-center mb-12 mt-8">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-light tracking-wide text-[#2d4a2d] mb-3">
+        <div className="text-center mb-14 mt-8">
+          <h2 className="heading-display mb-4" style={{ fontSize: "clamp(2.2rem, 6vw, 3.5rem)" }}>
             Fiesta
           </h2>
           <div className="gold-line my-5" />
-          <p className="text-base font-light text-[#5a7a5a] italic">
+          <p className="body-text italic" style={{ fontSize: "1.05rem" }}>
             Hagamos juntos una fiesta épica. Aquí algunos detalles a tener en cuenta.
           </p>
         </div>
 
-        {/* Cards grid */}
+        {/* Green cards grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
           {FIESTA_CARDS.map((card) => (
             <div key={card.title} className="fiesta-card p-8 flex flex-col items-center text-center gap-6">
-              <h3 className="text-xl sm:text-2xl font-light tracking-wide gold-shimmer">
+              {/* Title: white */}
+              <h3
+                className="font-bold tracking-wide text-white"
+                style={{
+                  fontFamily: "var(--font-playfair), 'Playfair Display', serif",
+                  fontSize: "clamp(1.3rem, 3vw, 1.6rem)",
+                }}
+              >
                 {card.title}
               </h3>
 
-              <div className="opacity-80">
-                {card.icon}
-              </div>
+              {/* Icon: gold */}
+              <div>{card.icon}</div>
 
-              <p className="text-sm font-light text-[#5a7a5a] leading-relaxed flex-1">
+              {/* Description: white/80 */}
+              <p className="leading-relaxed flex-1 text-white/80 font-normal"
+                 style={{ fontFamily: "var(--font-lato)", fontSize: "0.95rem" }}>
                 {card.desc}
               </p>
 
+              {/* Button: white border, white text, gold on hover */}
               <a
                 href={card.btnHref}
                 target={card.btnHref.startsWith("http") ? "_blank" : undefined}
                 rel={card.btnHref.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="btn-gold w-full"
+                className="btn-gold-white w-full"
               >
                 {card.btnLabel}
               </a>

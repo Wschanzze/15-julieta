@@ -1,4 +1,5 @@
 import BotanicalBackground from "@/components/invitation/BotanicalBackground"
+import { ScrollPlant } from "@/components/invitation/BotanicalBackground"
 import TopNav from "@/components/invitation/TopNav"
 import MusicController from "@/components/invitation/MusicModal"
 import HeroSection from "@/components/invitation/HeroSection"
@@ -11,47 +12,81 @@ import FiestaSection from "@/components/invitation/FiestaSection"
 import GiftsSection from "@/components/invitation/GiftsSection"
 import FooterSection from "@/components/invitation/FooterSection"
 
+// Plant image URLs
+const P1 = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Grupo02_c-3EiTan9ZCsZJZsAYp2lXd8OopYcOkh.png"
+const P2 = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Grupo01_c-Y9noh9pBBOxGvYxqRKSQupQRtwNhJQ.png"
+const P3 = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Grupo01_a-I01qVd94xKuPee9GLiy6wCkgD27VU8.png"
+const P4 = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Grupo01_b-OZipqt0hhFLK7aDXflBJX5nVhpR8l4.png"
+const P5 = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Grupo02_a-3Q0Lh62lJ7fFCaiw5j2DxCPo9y7YqO.png"
+const P6 = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Grupo03-vV8ZmLn8SJugR4qkyFXat32JLIll9m.png"
+const P7 = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Grupo04-yeHHU1ZvFscmQ2KzRrl96BzREsbVis.png"
+const P8 = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Grupo02_b-4bqiU83MCRvhcyC6c4OLFtI92JhNjo.png"
+
 export default function InvitationPage() {
   return (
-    <main className="relative min-h-screen bg-background overflow-x-hidden">
-      {/* Botanical background */}
+    <main className="relative min-h-screen bg-[#fafafa] overflow-x-hidden">
+      {/* Fixed white background */}
       <BotanicalBackground />
 
-      {/* Fixed elements */}
+      {/* Fixed UI elements */}
       <TopNav />
       <MusicController />
 
       {/* Invitation content */}
       <div className="relative z-10">
-        {/* 1. Hero / portada */}
-        <HeroSection />
 
-        {/* 2. Countdown */}
-        <CountdownSection />
+        {/* ── HERO ─────────────────────────────────────────────── */}
+        <div className="relative">
+          {/* Top-left plant */}
+          <ScrollPlant src={P1} style={{ top: 60, left: -20 }} width={220} height={260} />
+          {/* Top-right plant */}
+          <ScrollPlant src={P2} style={{ top: 40, right: -16 }} width={260} height={250} />
+          <HeroSection />
+        </div>
 
-        {/* 3. Guests */}
-        <GuestSection />
+        {/* ── COUNTDOWN ────────────────────────────────────────── */}
+        <div className="relative">
+          <ScrollPlant src={P3} style={{ top: "20%", left: -24 }} width={220} height={210} />
+          <CountdownSection />
+        </div>
 
-        {/* 4. Party details card */}
-        <PartyDetailsSection />
+        {/* ── GUEST MESSAGE ─────────────────────────────────────── */}
+        <div className="relative">
+          <ScrollPlant src={P4} style={{ top: "10%", right: -20 }} width={250} height={220} />
+          <GuestSection />
+        </div>
 
-        {/* 5. Attendance confirmation */}
-        <section id="confirmacion">
+        {/* ── PARTY DETAILS ─────────────────────────────────────── */}
+        <div className="relative">
+          <ScrollPlant src={P5} style={{ top: "15%", left: -16 }} width={210} height={210} />
+          <PartyDetailsSection />
+        </div>
+
+        {/* ── CONFIRMATION ─────────────────────────────────────── */}
+        <div className="relative" id="confirmacion">
+          <ScrollPlant src={P6} style={{ top: "20%", right: -12 }} width={240} height={220} />
           <ConfirmationSection />
-        </section>
+        </div>
 
-        {/* 6. Gallery */}
-        <GallerySection />
+        {/* ── GALLERY ──────────────────────────────────────────── */}
+        <div className="relative">
+          <ScrollPlant src={P7} style={{ top: "10%", left: -16 }} width={240} height={220} />
+          <GallerySection />
+        </div>
 
-        {/* 7. Fiesta info cards */}
-        <section id="fiesta">
+        {/* ── FIESTA CARDS ─────────────────────────────────────── */}
+        <div className="relative" id="fiesta">
+          <ScrollPlant src={P8} style={{ top: "5%", right: -14 }} width={230} height={200} />
           <FiestaSection />
-        </section>
+        </div>
 
-        {/* 8. Gifts */}
-        <GiftsSection />
+        {/* ── GIFTS ────────────────────────────────────────────── */}
+        <div className="relative">
+          <ScrollPlant src={P3} style={{ top: "20%", right: -16 }} width={200} height={200} />
+          <GiftsSection />
+        </div>
 
-        {/* 9. Footer */}
+        {/* ── FOOTER ───────────────────────────────────────────── */}
         <FooterSection />
       </div>
     </main>

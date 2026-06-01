@@ -1,18 +1,24 @@
 export default function FooterSection() {
   return (
-    <footer className="relative py-12 px-6 text-center z-10">
+    <footer className="relative py-14 px-6 text-center z-10">
       <div className="gold-line mb-8" />
 
-      <p className="text-sm tracking-[0.2em] text-[#5a7a5a] font-light mb-1 uppercase">
+      <p
+        className="heading-serif mb-1"
+        style={{ fontSize: "1.15rem", letterSpacing: "0.2em", color: "#2d5a2d" }}
+      >
         Julieta
       </p>
-      <p className="text-xs tracking-[0.15em] text-[#5a7a5a]/70 font-light mb-8 uppercase">
+      <p
+        className="label-text mb-8"
+        style={{ color: "#4a7a4a", opacity: 0.8 }}
+      >
         Mis XV años &mdash; 17 de Julio 2025
       </p>
 
-      <span className="text-xs text-[#5a7a5a]/50 font-light">
+      <span className="body-text" style={{ fontSize: "0.8rem", color: "#4a7a4a", opacity: 0.6 }}>
         Hecho con{" "}
-        <span className="text-[#b8962e] opacity-60" aria-hidden="true">♥</span>
+        <span className="heart-pulse inline-block" style={{ fontSize: "0.9rem" }} aria-hidden="true">♥</span>
       </span>
     </footer>
   )

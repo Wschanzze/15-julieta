@@ -1,13 +1,19 @@
 import type { Metadata } from 'next'
-import { Cormorant_Garamond, Geist_Mono } from 'next/font/google'
+import { Playfair_Display, Lato, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const cormorant = Cormorant_Garamond({
+const playfair = Playfair_Display({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['400', '500', '600', '700', '800', '900'],
   style: ['normal', 'italic'],
-  variable: '--font-cormorant',
+  variable: '--font-playfair',
+})
+
+const lato = Lato({
+  subsets: ['latin'],
+  weight: ['300', '400', '700'],
+  variable: '--font-lato',
 })
 
 const geistMono = Geist_Mono({
@@ -27,8 +33,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="es" className={`${cormorant.variable} ${geistMono.variable} bg-background`}>
-      <body className="font-serif antialiased bg-background text-foreground">
+    <html lang="es" className={`${playfair.variable} ${lato.variable} ${geistMono.variable} bg-background`}>
+      <body className="font-sans antialiased bg-background text-foreground">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

@@ -16,32 +16,20 @@ export default function GallerySection() {
   const [activeIdx, setActiveIdx] = useState<number | null>(null)
 
   return (
-    <section className="relative py-20 px-6 overflow-hidden">
+    <section className="relative py-24 px-6 overflow-hidden">
       <div className="relative z-10">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-light tracking-wide text-[#2d4a2d] mb-3">
+
+        <div className="text-center mb-14">
+          <h2 className="heading-display mb-4" style={{ fontSize: "clamp(1.8rem, 5vw, 3rem)" }}>
             Un recorrido de estos 15 años
           </h2>
           <div className="gold-line my-5" />
-          <p className="text-base font-light text-[#5a7a5a] italic">
+          <p className="body-text italic" style={{ fontSize: "1.05rem", color: "#4a7a4a" }}>
             Junto a personas que son muy importantes en mi vida
           </p>
 
-          {/* Camera icon */}
-          <div className="mt-6 flex justify-center">
-            <svg
-              width="40"
-              height="40"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#b8962e"
-              strokeWidth="1"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              opacity={0.7}
-              aria-hidden="true"
-            >
+          <div className="mt-6 flex justify-center" style={{ color: "#b8962e", opacity: 0.7 }}>
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
               <circle cx="12" cy="13" r="4" />
             </svg>
@@ -59,13 +47,7 @@ export default function GallerySection() {
               aria-label={`Ver foto ${i + 1}`}
             >
               <div className="relative w-full h-full">
-                <Image
-                  src={photo.src}
-                  alt={photo.alt}
-                  fill
-                  className="object-cover"
-                  sizes="176px"
-                />
+                <Image src={photo.src} alt={photo.alt} fill className="object-cover" sizes="176px" />
               </div>
             </button>
           ))}
@@ -75,7 +57,8 @@ export default function GallerySection() {
       {/* Lightbox */}
       {activeIdx !== null && (
         <div
-          className="fixed inset-0 bg-white/95 z-[300] flex items-center justify-center p-4"
+          className="fixed inset-0 z-[300] flex items-center justify-center p-4"
+          style={{ background: "rgba(255,255,255,0.96)" }}
           onClick={() => setActiveIdx(null)}
           role="dialog"
           aria-modal="true"
@@ -91,7 +74,8 @@ export default function GallerySection() {
             />
             <button
               onClick={() => setActiveIdx(null)}
-              className="absolute top-2 right-2 text-[#2d4a2d] text-xl bg-white/80 rounded-full w-8 h-8 flex items-center justify-center border border-[#b8962e44]"
+              className="absolute top-2 right-2 text-[#2d5a2d] text-xl rounded-full w-9 h-9 flex items-center justify-center"
+              style={{ background: "rgba(255,255,255,0.9)", border: "1.5px solid #b8962e55" }}
               aria-label="Cerrar foto"
             >
               &times;

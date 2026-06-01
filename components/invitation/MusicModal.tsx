@@ -12,54 +12,56 @@ function MusicModal({ onClose }: MusicModalProps) {
   return (
     <div className="music-modal-overlay" role="dialog" aria-modal="true" aria-label="Bienvenida">
       <div className="music-modal-box">
-        {/* Leaf corner decoration inside modal */}
-        <svg
-          className="absolute top-0 right-0 w-24 h-24 opacity-20 pointer-events-none"
-          viewBox="0 0 100 100"
-          fill="none"
+        {/* Leaf corner decorations */}
+        <img
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Grupo02_c-3EiTan9ZCsZJZsAYp2lXd8OopYcOkh.png"
+          alt=""
           aria-hidden="true"
-        >
-          <ellipse cx="70" cy="20" rx="18" ry="35" fill="#4a6e4a" transform="rotate(20 70 20)" />
-          <ellipse cx="90" cy="50" rx="12" ry="25" fill="#4a6e4a" transform="rotate(-15 90 50)" />
-          <line x1="75" y1="0" x2="75" y2="90" stroke="#b8962e" strokeWidth="1" opacity="0.6" />
-        </svg>
-        <svg
-          className="absolute bottom-0 left-0 w-20 h-20 opacity-15 pointer-events-none"
-          viewBox="0 0 100 100"
-          fill="none"
+          className="absolute top-0 right-0 w-28 h-28 object-contain opacity-25 pointer-events-none"
+          style={{ transform: "scaleX(-1)" }}
+        />
+        <img
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Grupo02_b-4bqiU83MCRvhcyC6c4OLFtI92JhNjo.png"
+          alt=""
           aria-hidden="true"
-        >
-          <ellipse cx="30" cy="80" rx="15" ry="30" fill="#4a6e4a" transform="rotate(-20 30 80)" />
-          <line x1="25" y1="100" x2="25" y2="30" stroke="#b8962e" strokeWidth="1" opacity="0.5" />
-        </svg>
+          className="absolute bottom-0 left-0 w-24 h-24 object-contain opacity-20 pointer-events-none"
+        />
 
         <div className="gold-line mb-6" />
 
-        <p className="text-sm tracking-[0.2em] uppercase text-[#5a7a5a] mb-3 font-light">
-          Bienvenidos a la invitación de
-        </p>
+        <p className="label-text mb-3">Bienvenidos a la invitación de</p>
 
-        <h2 className="text-4xl font-light gold-shimmer mb-2">Julieta</h2>
-        <p className="text-base tracking-[0.2em] font-light text-[#2d4a2d] mb-6">
+        <h2
+          className="gold-shimmer font-bold mb-2"
+          style={{ fontSize: "clamp(2.5rem, 8vw, 3.5rem)" }}
+        >
+          Julieta
+        </h2>
+        <p
+          className="heading-serif mb-6"
+          style={{ fontSize: "1.1rem", letterSpacing: "0.22em", color: "#2d5a2d" }}
+        >
           Mis XV años
         </p>
 
         <div className="gold-line mb-6" />
 
-        <p className="text-xs text-[#5a7a5a] mb-8 font-light italic">
+        <p className="body-text italic mb-8" style={{ fontSize: "0.9rem", color: "#4a7a4a" }}>
           La música de fondo es parte de la experiencia
         </p>
 
         <div className="flex flex-col gap-3">
           <button
             onClick={() => onClose(true)}
-            className="btn-gold py-3 text-base w-full"
+            className="btn-gold w-full"
+            style={{ fontSize: "1rem", padding: "0.75rem 1rem" }}
           >
             Ingresar con música
           </button>
           <button
             onClick={() => onClose(false)}
-            className="btn-gold py-3 text-base w-full opacity-60"
+            className="btn-gold w-full"
+            style={{ fontSize: "1rem", padding: "0.75rem 1rem", opacity: 0.55 }}
           >
             Ingresar sin música
           </button>

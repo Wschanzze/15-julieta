@@ -2,15 +2,15 @@ import ButterflyDivider from "./ButterflyDivider"
 
 export default function ConfirmationSection() {
   return (
-    <section className="relative py-24 px-6 overflow-hidden section-tinted">
+    <section id="confirmacion" className="relative py-24 px-6 overflow-hidden section-tinted">
       <div className="relative z-10 flex flex-col items-center text-center">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-light tracking-wide text-[#2d4a2d] mb-3">
+        <h2 className="heading-display mb-4" style={{ fontSize: "clamp(2rem, 5.5vw, 3.2rem)" }}>
           Confirmación de asistencia
         </h2>
 
         <div className="gold-line my-5" />
 
-        <p className="text-base font-light text-[#5a7a5a] mb-10 italic">
+        <p className="body-text italic mb-12" style={{ fontSize: "1.1rem", color: "#4a7a4a" }}>
           Es importante que confirmes tu asistencia
         </p>
 
@@ -18,7 +18,8 @@ export default function ConfirmationSection() {
           href="https://wa.me/5492494275937?text=Hola!+Confirmo+mi+asistencia+a+los+XV+de+Julieta+%F0%9F%8E%89"
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-gold px-10 py-3 text-base"
+          className="btn-gold"
+          style={{ fontSize: "1rem", padding: "0.75rem 3rem" }}
         >
           Confirmar asistencia
         </a>
