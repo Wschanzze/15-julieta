@@ -9,17 +9,17 @@ export default function HeroSection() {
       <div className="sparkle" style={{ bottom: '40%', left: '25%', animationDelay: '2s' }} />
       <div className="sparkle" style={{ top: '60%', right: '15%', animationDelay: '1.5s' }} />
       
-      <div className="flex-1 flex flex-col items-center justify-center text-center px-6 pt-28 pb-8 z-10 relative stagger-children">
+      <div className="flex-1 flex flex-col items-center justify-center text-center px-6 pt-28 pb-8 z-10 relative">
         {/* Date */}
-        <p className="label-text text-sm mb-6 smooth-reveal">
+        <p className="label-text text-sm mb-6">
           17.07.2026
         </p>
 
-        <div className="gold-line mb-6 shine-effect" />
+        <div className="gold-line mb-6" />
 
         {/* Name — dorado con efectos premium */}
         <h1
-          className="leading-none mb-4 text-shadow-premium floating"
+          className="leading-none mb-4"
           style={{
             fontSize: "clamp(5rem, 18vw, 11rem)",
             fontWeight: 400,
@@ -33,7 +33,7 @@ export default function HeroSection() {
           Julieta
         </h1>
 
-        <div className="gold-line mb-6 shine-effect" />
+        <div className="gold-line mb-6" />
 
         {/* Subtitle */}
         <p
@@ -43,8 +43,8 @@ export default function HeroSection() {
           Mis XV años
         </p>
 
-        {/* Message con efecto de entrada suave */}
-        <p className="body-text max-w-md text-lg italic leading-relaxed text-[#4a7a4a] smooth-reveal">
+        {/* Message */}
+        <p className="body-text max-w-md text-lg italic leading-relaxed text-[#4a7a4a]">
           Te espero para compartir la alegría de esa noche que será para mí mágica, inolvidable y única.
         </p>
       </div>
