@@ -7,10 +7,10 @@ export default function PartyDetailsSection() {
   return (
     <section className="relative py-24 px-6 overflow-hidden section-tinted">
       <div className="relative z-10 flex justify-center">
-        <div className="info-card w-full max-w-sm p-10 flex flex-col items-center text-center gap-8">
+        <div className="glass-card w-full max-w-sm p-10 flex flex-col items-center text-center gap-8 rounded-3xl">
 
-          {/* Icon */}
-          <div style={{ color: "#b8962e" }}>
+          {/* Icon con efecto glow */}
+          <div className="glow-gold rounded-full p-4" style={{ color: "#b8962e" }}>
             <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M5.8 11.3 2 22l10.7-3.79" />
               <path d="M4 3h.01" /><path d="M22 8h.01" /><path d="M15 2h.01" /><path d="M22 20h.01" />
@@ -21,7 +21,7 @@ export default function PartyDetailsSection() {
             </svg>
           </div>
 
-          <h2 className="heading-display" style={{ fontSize: "clamp(2rem, 5vw, 2.8rem)" }}>
+          <h2 className="heading-display gradient-text-premium" style={{ fontSize: "clamp(2rem, 5vw, 2.8rem)" }}>
             Fiesta
           </h2>
 
@@ -29,9 +29,8 @@ export default function PartyDetailsSection() {
           <div className="w-full flex flex-col items-center gap-3 border-b border-[#b8962e33] pb-7">
             <p className="label-text">Día</p>
             <p className="body-text font-bold" style={{ fontSize: "1.1rem" }}>
-              Jueves <span className="text-[#b8962e]">17</span> de Julio &mdash; 21hs
+              Viernes <span className="text-[#b8962e]">17</span> de Julio &mdash; 21hs
             </p>
-
           </div>
 
           {/* Venue */}
@@ -42,7 +41,7 @@ export default function PartyDetailsSection() {
               href="https://wa.me/5492494275937?text=Hola!+Confirmo+mi+asistencia+a+los+XV+de+Julieta+%F0%9F%8E%89"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-gold mt-2"
+              className="btn-premium mt-2 ripple-effect"
             >
               Confirmar asistencia
             </a>
@@ -56,7 +55,7 @@ export default function PartyDetailsSection() {
               href={mapsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-gold mt-2"
+              className="btn-premium mt-2 ripple-effect"
             >
               ¿Cómo llegar?
             </a>

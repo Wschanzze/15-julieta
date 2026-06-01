@@ -11,6 +11,7 @@ import GallerySection from "@/components/invitation/GallerySection"
 import FiestaSection from "@/components/invitation/FiestaSection"
 import GiftsSection from "@/components/invitation/GiftsSection"
 import FooterSection from "@/components/invitation/FooterSection"
+import FloatingParticles from "@/components/invitation/FloatingParticles"
 
 // Plant image URLs
 const P1 = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Grupo02_c-3EiTan9ZCsZJZsAYp2lXd8OopYcOkh.png"
@@ -27,6 +28,9 @@ export default function InvitationPage() {
     <main className="relative min-h-screen bg-[#fafafa] overflow-x-hidden">
       {/* Fixed white background */}
       <BotanicalBackground />
+
+      {/* Floating particles premium effect */}
+      <FloatingParticles />
 
       {/* Fixed UI elements */}
       <TopNav />
