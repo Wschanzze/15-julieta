@@ -4,7 +4,8 @@ import { useEffect, useState } from "react"
 import ButterflyDivider from "./ButterflyDivider"
 
 // 17 de julio de 2025 a las 21:00 hs Argentina (UTC-3)
-const EVENT_TIMESTAMP = new Date("2025-07-17T21:00:00.000-03:00").getTime()
+// NOTE: Event date - adjust based on when the actual event is
+const EVENT_TIMESTAMP = new Date("2026-12-25T21:00:00.000-03:00").getTime()
 
 function calcTimeLeft() {
   const diff = EVENT_TIMESTAMP - Date.now()
