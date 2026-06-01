@@ -17,15 +17,17 @@ export default function HeroSection() {
 
         <div className="gold-line mb-6 shine-effect" />
 
-        {/* Name — gold shimmer premium con efecto de brillo */}
+        {/* Name — dorado con efectos premium */}
         <h1
-          className="gold-shimmer leading-none mb-4 text-shadow-premium floating"
+          className="leading-none mb-4 text-shadow-premium floating"
           style={{
             fontSize: "clamp(5rem, 18vw, 11rem)",
             fontWeight: 400,
             fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif",
             fontStyle: "italic",
             letterSpacing: "0.04em",
+            color: "#d4b96a",
+            textShadow: "0 0 20px rgba(212, 185, 106, 0.4), 0 2px 4px rgba(45, 90, 45, 0.1)",
           }}
         >
           Julieta
