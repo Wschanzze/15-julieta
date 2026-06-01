@@ -53,25 +53,11 @@ export default function CountdownSection() {
           letterSpacing: "0.22em",
           textTransform: "uppercase",
           color: "#b8962e",
-          marginBottom: "0.75rem",
+          marginBottom: "2.5rem",
         }}
       >
         Faltan
       </p>
-
-      <h2
-        style={{
-          fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif",
-          fontStyle: "italic",
-          fontSize: "clamp(1.6rem, 4vw, 2.4rem)",
-          fontWeight: 400,
-          color: "#2d5a2d",
-          marginBottom: "2.5rem",
-          lineHeight: 1.2,
-        }}
-      >
-        para el gran día
-      </h2>
 
       {/* Counter */}
       {!mounted ? (
@@ -158,6 +144,22 @@ export default function CountdownSection() {
           ))}
         </div>
       )}
+
+      {/* Para el gran día */}
+      <h2
+        style={{
+          fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif",
+          fontStyle: "italic",
+          fontSize: "clamp(1.6rem, 4vw, 2.4rem)",
+          fontWeight: 400,
+          color: "#2d5a2d",
+          marginTop: "2.5rem",
+          marginBottom: "0",
+          lineHeight: 1.2,
+        }}
+      >
+        para el gran día
+      </h2>
 
       {/* Decorative line + heart */}
       <div className="flex flex-col items-center gap-3 mt-10">
