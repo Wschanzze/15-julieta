@@ -45,11 +45,11 @@ export default function GallerySection() {
 
         <div className="text-center mb-14">
           <h2 className="heading-display mb-4" style={{ fontSize: "clamp(1.8rem, 5vw, 3rem)" }}>
-            Un recorrido de estos 15 años
+            La protagonista de esta historia
           </h2>
           <div className="gold-line my-5" />
           <p className="body-text italic" style={{ fontSize: "1.05rem", color: "#4a7a4a" }}>
-            Junto a personas que son muy importantes en mi vida
+            Detalles, sueños y emociones que forman parte de mis 15 años.
           </p>
 
           <div className="mt-6 flex justify-center" style={{ color: "#b8962e", opacity: 0.7 }}>
