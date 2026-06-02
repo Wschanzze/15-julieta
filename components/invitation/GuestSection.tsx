@@ -8,7 +8,7 @@ export default function GuestSection() {
           className="body-text italic"
           style={{ fontSize: "clamp(1.1rem, 2.5vw, 1.3rem)", color: "#2d5a2d" }}
         >
-          Nos encanta compartir este momento con vos. ¡Te esperamos!
+          Los momentos más felices y divertidos de la vida se tornan más lindos cuando los compartimos con familiares y amigos.
         </p>
       </div>
       <div className="mt-8">
