@@ -246,83 +246,57 @@ export default function GiftsSection() {
         </div>
       </section>
 
-      {/* Confirmation Section - Same style as PartyDetailsSection */}
+      {/* Confirmation Section - Same style as ConfirmationSection */}
       <section className="relative py-14 px-4 sm:px-6 overflow-hidden section-tinted">
-        <div className="relative z-10 flex justify-center">
-          <div className="glass-card w-full max-w-sm p-6 sm:p-10 flex flex-col items-center text-center gap-6 sm:gap-8 rounded-3xl">
+        <div className="relative z-10 flex flex-col items-center text-center">
+          <h2 className="heading-display mb-4" style={{ fontSize: "clamp(2rem, 5.5vw, 3.2rem)" }}>
+            Confirmación de asistencia
+          </h2>
 
-            {/* Icon con efecto glow */}
-            <div className="glow-gold rounded-full p-4" style={{ color: "#b8962e" }}>
-              <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
-            </div>
+          <div className="gold-line my-4" />
 
-            <h2 className="heading-display gradient-text-premium" style={{ fontSize: "clamp(1.8rem, 5vw, 2.8rem)" }}>
-              Confirmación
-            </h2>
+          <p className="body-text italic mb-8" style={{ fontSize: "1.1rem", color: "#4a7a4a" }}>
+            Es importante que confirmes tu asistencia
+          </p>
 
-            {/* Description */}
-            <div className="w-full flex flex-col items-center gap-2 sm:gap-3">
-              <p className="body-text font-semibold" style={{ fontSize: "clamp(0.95rem, 3vw, 1.1rem)", color: "#4a7a4a" }}>
-                Es importante que confirmes tu asistencia
-              </p>
-            </div>
+          <a
+            href="https://wa.me/5492494275937?text=Hola!+Confirmo+mi+asistencia+a+los+XV+de+Julieta+%F0%9F%8E%89+He+preparado+todos+los+ítems+de+la+checklist."
+            onClick={(e) => {
+              const allChecked = checkedItems.every(item => item)
+              if (!allChecked) {
+                e.preventDefault()
+              }
+            }}
+            target={checkedItems.every(item => item) ? "_blank" : undefined}
+            rel={checkedItems.every(item => item) ? "noopener noreferrer" : undefined}
+            className="btn-gold"
+            style={{
+              fontSize: "1rem",
+              padding: "0.75rem 3rem",
+              pointerEvents: checkedItems.every(item => item) ? "auto" : "none",
+              opacity: checkedItems.every(item => item) ? 1 : 0.5,
+              cursor: checkedItems.every(item => item) ? "pointer" : "not-allowed",
+            }}
+            title={checkedItems.every(item => item) ? "" : "Debes marcar todas las casillas para confirmar"}
+          >
+            Confirmar asistencia
+          </a>
 
-            {/* Confirmation Button */}
-            <a
-              href="https://wa.me/5492494275937?text=¡Hola!+Confirmo+mi+asistencia+a+los+XV+de+Julieta+%F0%9F%8E%89+He+preparado+todos+los+ítems+de+la+checklist."
-              onClick={(e) => {
-                const allChecked = checkedItems.every(item => item)
-                if (!allChecked) {
-                  e.preventDefault()
-                }
-              }}
-              className={`mt-4 text-sm sm:text-base ripple-effect transition-all duration-300`}
+          {/* Helper message when not all items are checked */}
+          {!checkedItems.every(item => item) && (
+            <p
+              className="text-xs sm:text-sm mt-4"
               style={{
-                pointerEvents: checkedItems.every(item => item) ? "auto" : "none",
-                opacity: checkedItems.every(item => item) ? 1 : 0.5,
+                color: "#b8962e",
+                fontStyle: "italic",
               }}
-              title={checkedItems.every(item => item) ? "" : "Debes marcar todas las casillas para confirmar"}
-              target={checkedItems.every(item => item) ? "_blank" : undefined}
-              rel={checkedItems.every(item => item) ? "noopener noreferrer" : undefined}
             >
-              <span
-                className={`inline-block px-6 sm:px-8 py-2 sm:py-3 rounded-full font-semibold transition-all duration-300`}
-                style={{
-                  background: checkedItems.every(item => item)
-                    ? "linear-gradient(135deg, rgba(184, 150, 46, 0.1), rgba(212, 185, 106, 0.1))"
-                    : "rgba(200, 200, 200, 0.1)",
-                  border: checkedItems.every(item => item)
-                    ? "2px solid transparent"
-                    : "2px solid rgba(200, 200, 200, 0.3)",
-                  color: checkedItems.every(item => item)
-                    ? "#2d5a2d"
-                    : "#888888",
-                  cursor: checkedItems.every(item => item) ? "pointer" : "not-allowed",
-                }}
-              >
-                Confirmar Asistencia
-              </span>
-            </a>
-
-            {/* Helper message when not all items are checked */}
-            {!checkedItems.every(item => item) && (
-              <p
-                className="text-xs sm:text-sm mt-3"
-                style={{
-                  color: "#b8962e",
-                  fontStyle: "italic",
-                }}
-              >
-                👆 Completa la checklist arriba
-              </p>
-            )}
-          </div>
+              👆 Completa la checklist arriba
+            </p>
+          )}
         </div>
 
-        <div className="mt-10 sm:mt-12">
+        <div className="mt-10">
           <ButterflyDivider />
         </div>
       </section>
