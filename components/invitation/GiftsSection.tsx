@@ -239,64 +239,61 @@ export default function GiftsSection() {
           >
             ✓ Marca todas las casillas para confirmar tu asistencia
           </p>
-        </div>
 
-        <div className="mt-8 sm:mt-12">
-          <ButterflyDivider />
-        </div>
-      </section>
+          {/* Divisor interno */}
+          <div className="w-full my-10 sm:my-12 border-t border-[rgba(184,150,46,0.2)]" />
 
-      {/* Confirmation Section - Same style as ConfirmationSection */}
-      <section className="relative py-14 px-4 sm:px-6 overflow-hidden section-tinted">
-        <div className="relative z-10 flex flex-col items-center text-center">
-          <h2 className="heading-display mb-4" style={{ fontSize: "clamp(2rem, 5.5vw, 3.2rem)" }}>
-            Confirmación de asistencia
-          </h2>
+          {/* Confirmation Section - Inline */}
+          <div className="flex flex-col items-center text-center">
+            <h3 className="heading-display mb-4" style={{ fontSize: "clamp(2rem, 5.5vw, 3.2rem)" }}>
+              Confirmación de asistencia
+            </h3>
 
-          <div className="gold-line my-4" />
+            <div className="gold-line my-4" />
 
-          <p className="body-text italic mb-8" style={{ fontSize: "1.1rem", color: "#4a7a4a" }}>
-            Es importante que confirmes tu asistencia
-          </p>
-
-          <a
-            href="https://wa.me/5492494275937?text=Hola!+Confirmo+mi+asistencia+a+los+XV+de+Julieta+%F0%9F%8E%89+He+preparado+todos+los+ítems+de+la+checklist."
-            onClick={(e) => {
-              const allChecked = checkedItems.every(item => item)
-              if (!allChecked) {
-                e.preventDefault()
-              }
-            }}
-            target={checkedItems.every(item => item) ? "_blank" : undefined}
-            rel={checkedItems.every(item => item) ? "noopener noreferrer" : undefined}
-            className="btn-gold"
-            style={{
-              fontSize: "1rem",
-              padding: "0.75rem 3rem",
-              pointerEvents: checkedItems.every(item => item) ? "auto" : "none",
-              opacity: checkedItems.every(item => item) ? 1 : 0.5,
-              cursor: checkedItems.every(item => item) ? "pointer" : "not-allowed",
-            }}
-            title={checkedItems.every(item => item) ? "" : "Debes marcar todas las casillas para confirmar"}
-          >
-            Confirmar asistencia
-          </a>
-
-          {/* Helper message when not all items are checked */}
-          {!checkedItems.every(item => item) && (
-            <p
-              className="text-xs sm:text-sm mt-4"
-              style={{
-                color: "#b8962e",
-                fontStyle: "italic",
-              }}
-            >
-              👆 Completa la checklist arriba
+            <p className="body-text italic mb-8" style={{ fontSize: "1.1rem", color: "#4a7a4a" }}>
+              Es importante que confirmes tu asistencia
             </p>
-          )}
+
+            <a
+              href="https://wa.me/5492494275937?text=Hola!+Confirmo+mi+asistencia+a+los+XV+de+Julieta+%F0%9F%8E%89+He+preparado+todos+los+ítems+de+la+checklist."
+              onClick={(e) => {
+                const allChecked = checkedItems.every(item => item)
+                if (!allChecked) {
+                  e.preventDefault()
+                }
+              }}
+              target={checkedItems.every(item => item) ? "_blank" : undefined}
+              rel={checkedItems.every(item => item) ? "noopener noreferrer" : undefined}
+              className="btn-gold"
+              style={{
+                fontSize: "1rem",
+                padding: "0.75rem 3rem",
+                pointerEvents: checkedItems.every(item => item) ? "auto" : "none",
+                opacity: checkedItems.every(item => item) ? 1 : 0.5,
+                cursor: checkedItems.every(item => item) ? "pointer" : "not-allowed",
+              }}
+              title={checkedItems.every(item => item) ? "" : "Debes marcar todas las casillas para confirmar"}
+            >
+              Confirmar asistencia
+            </a>
+
+            {/* Helper message when not all items are checked */}
+            {!checkedItems.every(item => item) && (
+              <p
+                className="text-xs sm:text-sm mt-4"
+                style={{
+                  color: "#b8962e",
+                  fontStyle: "italic",
+                }}
+              >
+                👆 Completa la checklist arriba
+              </p>
+            )}
+          </div>
         </div>
 
-        <div className="mt-10">
+        <div className="mt-12 sm:mt-14">
           <ButterflyDivider />
         </div>
       </section>
