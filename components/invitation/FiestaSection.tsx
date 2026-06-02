@@ -1,7 +1,5 @@
 "use client"
 
-import ButterflyDivider from "./ButterflyDivider"
-
 // Inline SVG icons — refined, thin-stroke, elegant
 const IconMusic = () => (
   <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#b8962e" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -85,11 +83,6 @@ const FIESTA_CARDS = [
 export default function FiestaSection() {
   return (
     <section id="fiesta" className="relative py-16 px-6 overflow-visible">
-      {/* Top divider */}
-      <div className="mb-4">
-        <ButterflyDivider />
-      </div>
-
       {/* Section header */}
       <div className="text-center mb-12 mt-8">
         <p
