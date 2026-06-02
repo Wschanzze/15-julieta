@@ -213,7 +213,7 @@ export default function GiftsSection() {
           </div>
 
           {/* Counter */}
-          <div className="mt-10 sm:mt-12 flex items-center justify-center gap-2">
+          <div className="mt-10 sm:mt-12 flex items-center justify-center gap-2 mb-6 sm:mb-8">
             <span
               className="text-base sm:text-lg font-semibold"
               style={{ color: "#2d5a2d" }}
@@ -226,6 +226,93 @@ export default function GiftsSection() {
             >
               {checkedItems.filter(Boolean).length}/{CHECKLIST_ITEMS.length}
             </span>
+          </div>
+
+          {/* Mini aclaración */}
+          <p
+            className="text-xs sm:text-sm mb-6 sm:mb-8 px-4"
+            style={{
+              color: "#4a7a4a",
+              fontStyle: "italic",
+              opacity: 0.8,
+            }}
+          >
+            ✓ Marca todas las casillas para confirmar tu asistencia
+          </p>
+
+          {/* Confirmation Section */}
+          <div className="mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-[rgba(184,150,46,0.2)]">
+            <h3
+              className="text-lg sm:text-xl font-bold mb-2"
+              style={{ color: "#2d5a2d" }}
+            >
+              Confirmación de Asistencia
+            </h3>
+            <p
+              className="text-sm sm:text-base mb-6 text-[#4a7a4a]"
+              style={{ fontStyle: "italic" }}
+            >
+              Es importante que confirmes tu asistencia
+            </p>
+
+            <a
+              href="https://wa.me/5492494275937?text=¡Hola!+Confirmo+mi+asistencia+a+los+XV+de+Julieta+%F0%9F%8E%89+He+preparado+todos+los+ítems+de+la+checklist."
+              onClick={(e) => {
+                const allChecked = checkedItems.every(item => item)
+                if (!allChecked) {
+                  e.preventDefault()
+                }
+              }}
+              className={`inline-block px-8 sm:px-12 py-3 sm:py-4 rounded-full transition-all duration-300 font-semibold text-center w-full sm:w-auto`}
+              style={{
+                background: checkedItems.every(item => item)
+                  ? "#2d5a2d"
+                  : "#d4d4d4",
+                color: checkedItems.every(item => item)
+                  ? "#fff"
+                  : "#888888",
+                border: checkedItems.every(item => item)
+                  ? "2px solid #2d5a2d"
+                  : "2px solid #d4d4d4",
+                cursor: checkedItems.every(item => item)
+                  ? "pointer"
+                  : "not-allowed",
+                boxShadow: checkedItems.every(item => item)
+                  ? "0 4px 16px rgba(45, 90, 45, 0.2)"
+                  : "none",
+                opacity: checkedItems.every(item => item) ? 1 : 0.6,
+              }}
+              onMouseEnter={(e) => {
+                if (checkedItems.every(item => item)) {
+                  (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)"
+                  ;(e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 6px 20px rgba(45, 90, 45, 0.3)"
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (checkedItems.every(item => item)) {
+                  (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)"
+                  ;(e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 16px rgba(45, 90, 45, 0.2)"
+                }
+              }}
+              title={checkedItems.every(item => item) ? "" : "Debes marcar todas las casillas para confirmar"}
+              target={checkedItems.every(item => item) ? "_blank" : undefined}
+              rel={checkedItems.every(item => item) ? "noopener noreferrer" : undefined}
+            >
+              Confirmar Asistencia
+            </a>
+
+            {/* Helper message when not all items are checked */}
+            {!checkedItems.every(item => item) && (
+              <p
+                className="text-xs sm:text-sm mt-3 text-center"
+                style={{
+                  color: "#b8962e",
+                  fontStyle: "italic",
+                }}
+              >
+                👆 Completa la checklist arriba para activar el botón
+              </p>
+            )}
           </div>
         </div>
 
