@@ -3,214 +3,236 @@
 import { useState } from "react"
 import ButterflyDivider from "./ButterflyDivider"
 
-// SVG del cofre con billetes
-const TreasureChestIcon = () => (
-  <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#b8962e" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    {/* Billetes volando */}
-    <rect x="14" y="2" width="4" height="2.5" rx="0.3" fill="#b8962e" opacity="0.6" transform="rotate(15 16 3)" />
-    <rect x="10" y="1" width="3.5" height="2" rx="0.3" fill="#b8962e" opacity="0.5" transform="rotate(-20 11.5 2)" />
-    <rect x="18" y="3.5" width="3" height="2" rx="0.3" fill="#b8962e" opacity="0.4" transform="rotate(25 19.5 4.5)" />
-    
-    {/* Cofre */}
-    <rect x="4" y="11" width="16" height="9" rx="1" stroke="#2d5a2d" strokeWidth="1.5" fill="none" />
-    <path d="M4 15 h16" stroke="#2d5a2d" strokeWidth="1.5" />
-    <rect x="11" y="13" width="2" height="3" rx="0.5" fill="#b8962e" />
-    <path d="M4 11 L4 8 C4 7 5 6 6 6 L18 6 C19 6 20 7 20 8 L20 11" stroke="#2d5a2d" strokeWidth="1.5" fill="none" />
+// Iconos SVG para cada item
+const IconAttitude = () => (
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#b8962e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="10" />
+    <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+    <circle cx="9" cy="9" r="1" fill="#b8962e" />
+    <circle cx="15" cy="9" r="1" fill="#b8962e" />
   </svg>
 )
 
-// SVG de Mercado Pago (simplificado)
-const MercadoPagoIcon = () => (
-  <svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Mercado Pago">
-    {/* Fondo redondeado */}
-    <rect x="10" y="10" width="180" height="40" rx="8" fill="#009EE3" />
-    
-    {/* Icono de apretón de manos simplificado */}
-    <ellipse cx="40" cy="30" rx="12" ry="10" fill="#fff" />
-    <path d="M35 30 Q40 25 45 30" stroke="#009EE3" strokeWidth="2" fill="none" />
-    
-    {/* Texto "mercado pago" */}
-    <text x="60" y="28" fontFamily="Arial, sans-serif" fontSize="12" fontWeight="700" fill="#003D7A">mercado</text>
-    <text x="60" y="42" fontFamily="Arial, sans-serif" fontSize="12" fontWeight="700" fill="#00A0E3">pago</text>
+const IconDance = () => (
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#b8962e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M12 2v4" />
+    <path d="M12 18v4" />
+    <circle cx="12" cy="12" r="3" />
+    <path d="M7 9l-3-3" />
+    <path d="M20 20l3 3" />
+    <path d="M17 9l3-3" />
+    <path d="M7 15l-3 3" />
   </svg>
 )
+
+const IconFun = () => (
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#b8962e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M11 15H7a4 4 0 0 0-4 4v2h4a4 4 0 0 0 4-4v-2z" />
+    <path d="M13 15h4a4 4 0 0 1 4 4v2h-4a4 4 0 0 1-4-4v-2z" />
+    <circle cx="9" cy="10" r="1" fill="#b8962e" />
+    <circle cx="15" cy="10" r="1" fill="#b8962e" />
+    <path d="M12 3v2" />
+  </svg>
+)
+
+const IconMemories = () => (
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#b8962e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+    <circle cx="12" cy="13" r="4" />
+  </svg>
+)
+
+const IconLove = () => (
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#b8962e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+  </svg>
+)
+
+// Items a recordar traer
+const CHECKLIST_ITEMS = [
+  {
+    icon: <IconAttitude />,
+    title: "Actitud Positiva",
+    description: "¡La mejor energía para comenzar!",
+    emoji: "✨"
+  },
+  {
+    icon: <IconDance />,
+    title: "Ganas de Bailar",
+    description: "La pista nos espera",
+    emoji: "💃"
+  },
+  {
+    icon: <IconFun />,
+    title: "Espíritu de Diversión",
+    description: "A disfrutar como nunca",
+    emoji: "🎉"
+  },
+  {
+    icon: <IconMemories />,
+    title: "Tu Cámara",
+    description: "Para capturar los mejores momentos",
+    emoji: "📸"
+  },
+  {
+    icon: <IconLove />,
+    title: "Mucho Amor",
+    description: "Lo más importante de la noche",
+    emoji: "❤️"
+  },
+]
 
 export default function GiftsSection() {
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [checkedItems, setCheckedItems] = useState<boolean[]>(new Array(CHECKLIST_ITEMS.length).fill(false))
+
+  const toggleCheck = (index: number) => {
+    const newChecked = [...checkedItems]
+    newChecked[index] = !newChecked[index]
+    setCheckedItems(newChecked)
+  }
 
   return (
     <>
-      <section className="relative py-14 px-6 overflow-hidden">
+      <section className="relative py-14 px-4 sm:px-6 overflow-hidden">
         <div className="relative z-10 flex flex-col items-center text-center">
-          <h2 className="heading-display mb-4" style={{ fontSize: "clamp(2rem, 5vw, 3rem)" }}>
-            Regalos
+          <h2 className="heading-display mb-4" style={{ fontSize: "clamp(1.8rem, 5vw, 3rem)" }}>
+            Recuerda Traer
           </h2>
           <div className="gold-line my-4" />
-          <p className="body-text text-lg italic mb-8 text-[#4a7a4a]">
-            Si deseás regalarme algo más que tu hermosa presencia...
+          <p className="body-text text-base sm:text-lg italic mb-8 sm:mb-10 text-[#4a7a4a] px-2">
+            Lo esencial para que esta noche sea inolvidable...
           </p>
 
-          <div className="mb-8">
-            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#b8962e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <polyline points="20 12 20 22 4 22 4 12" />
-              <rect x="2" y="7" width="20" height="5" />
-              <line x1="12" y1="22" x2="12" y2="7" />
-              <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" />
-              <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
-            </svg>
+          {/* Checklist Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6 w-full max-w-6xl mx-auto px-2">
+            {CHECKLIST_ITEMS.map((item, idx) => (
+              <button
+                key={idx}
+                onClick={() => toggleCheck(idx)}
+                className="group relative flex flex-col items-center text-center p-4 sm:p-6 rounded-2xl transition-all duration-300 cursor-pointer"
+                style={{
+                  background: checkedItems[idx]
+                    ? "linear-gradient(135deg, rgba(45, 90, 45, 0.15), rgba(184, 150, 46, 0.1))"
+                    : "#fffefb",
+                  border: checkedItems[idx]
+                    ? "2px solid #2d5a2d"
+                    : "1.5px solid rgba(184, 150, 46, 0.3)",
+                  boxShadow: checkedItems[idx]
+                    ? "0 8px 24px rgba(45, 90, 45, 0.15), 0 0 0 1px rgba(184,150,46,0.3)"
+                    : "0 2px 12px rgba(45, 90, 45, 0.06)",
+                }}
+                onMouseEnter={(e) => {
+                  if (!checkedItems[idx]) {
+                    (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-4px)"
+                    ;(e.currentTarget as HTMLButtonElement).style.boxShadow = "0 8px 24px rgba(184, 150, 46, 0.2)"
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!checkedItems[idx]) {
+                    (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)"
+                    ;(e.currentTarget as HTMLButtonElement).style.boxShadow = "0 2px 12px rgba(45, 90, 45, 0.06)"
+                  }
+                }}
+              >
+                {/* Checkbox indicator */}
+                <div
+                  className="absolute top-3 right-3 w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center transition-all duration-300"
+                  style={{
+                    border: checkedItems[idx]
+                      ? "2px solid #2d5a2d"
+                      : "2px solid #b8962e",
+                    background: checkedItems[idx]
+                      ? "#2d5a2d"
+                      : "transparent",
+                  }}
+                >
+                  {checkedItems[idx] && (
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  )}
+                </div>
+
+                {/* Icon */}
+                <div
+                  className="mb-3 transition-transform duration-300"
+                  style={{
+                    transform: checkedItems[idx] ? "scale(1.1)" : "scale(1)",
+                    opacity: checkedItems[idx] ? 0.7 : 1,
+                  }}
+                >
+                  {item.icon}
+                </div>
+
+                {/* Emoji accent */}
+                <span
+                  className="text-2xl sm:text-3xl mb-2 transition-transform duration-300 inline-block"
+                  style={{
+                    transform: checkedItems[idx] ? "rotate(360deg) scale(1.2)" : "rotate(0deg) scale(1)",
+                    animation: !checkedItems[idx] ? "floating 3s ease-in-out infinite" : "none",
+                  }}
+                >
+                  {item.emoji}
+                </span>
+
+                {/* Title */}
+                <h3
+                  className="font-bold text-sm sm:text-base transition-all duration-300"
+                  style={{
+                    color: checkedItems[idx] ? "#2d5a2d" : "#2d5a2d",
+                    textDecoration: checkedItems[idx] ? "line-through" : "none",
+                    opacity: checkedItems[idx] ? 0.7 : 1,
+                  }}
+                >
+                  {item.title}
+                </h3>
+
+                {/* Description */}
+                <p
+                  className="text-xs sm:text-sm mt-1 transition-all duration-300"
+                  style={{
+                    color: "#4a7a4a",
+                    opacity: checkedItems[idx] ? 0.6 : 0.8,
+                  }}
+                >
+                  {item.description}
+                </p>
+
+                {/* Glow effect on check */}
+                {checkedItems[idx] && (
+                  <div
+                    className="absolute inset-0 rounded-2xl pointer-events-none"
+                    style={{
+                      boxShadow: "inset 0 0 20px rgba(45, 90, 45, 0.2)",
+                      animation: "pulse 2s ease-in-out infinite",
+                    }}
+                  />
+                )}
+              </button>
+            ))}
           </div>
 
-          <button 
-            onClick={() => setIsModalOpen(true)}
-            className="btn-gold px-12 py-4 text-lg"
-          >
-            Ver más
-          </button>
+          {/* Counter */}
+          <div className="mt-10 sm:mt-12 flex items-center justify-center gap-2">
+            <span
+              className="text-base sm:text-lg font-semibold"
+              style={{ color: "#2d5a2d" }}
+            >
+              Preparado:
+            </span>
+            <span
+              className="text-2xl sm:text-3xl font-bold"
+              style={{ color: "#b8962e" }}
+            >
+              {checkedItems.filter(Boolean).length}/{CHECKLIST_ITEMS.length}
+            </span>
+          </div>
         </div>
 
-        <div className="mt-10">
+        <div className="mt-10 sm:mt-12">
           <ButterflyDivider />
         </div>
       </section>
-
-      {/* Modal de Regalos */}
-      {isModalOpen && (
-        <div
-          className="fixed inset-0 z-[400] flex items-center justify-center p-4"
-          style={{ 
-            background: "rgba(45, 90, 45, 0.75)",
-            backdropFilter: "blur(8px)"
-          }}
-          onClick={() => setIsModalOpen(false)}
-          role="dialog"
-          aria-modal="true"
-          aria-label="Información de regalos"
-        >
-          <div
-            className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto"
-            style={{
-              background: "#fffefb",
-              borderRadius: "1.5rem",
-              border: "2px solid rgba(184, 150, 46, 0.3)",
-              boxShadow: "0 20px 60px rgba(45, 90, 45, 0.3), 0 0 0 1px rgba(184,150,46,0.2)",
-              padding: "2rem 1.5rem",
-            }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Botón cerrar */}
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="absolute top-4 right-4 text-[#2d5a2d] text-2xl rounded-full w-10 h-10 flex items-center justify-center transition-all hover:bg-[#2d5a2d] hover:text-white"
-              style={{ border: "1.5px solid rgba(184, 150, 46, 0.4)" }}
-              aria-label="Cerrar"
-            >
-              &times;
-            </button>
-
-            {/* Icono del cofre */}
-            <div className="flex justify-center mb-6">
-              <TreasureChestIcon />
-            </div>
-
-            {/* Texto principal */}
-            <p 
-              className="text-center mb-6 sm:mb-8 leading-relaxed px-2"
-              style={{
-                fontFamily: "var(--font-lato), 'Lato', sans-serif",
-                fontSize: "clamp(0.95rem, 3vw, 1.1rem)",
-                color: "#2d5a2d",
-                fontWeight: 500
-              }}
-            >
-              En el salón habrá un cofre para que dejes tu sobre.
-            </p>
-
-            {/* Divisor dorado */}
-            <div 
-              className="mx-auto mb-6 sm:mb-8"
-              style={{
-                width: "80px",
-                height: "1.5px",
-                background: "linear-gradient(to right, transparent, #b8962e, transparent)"
-              }}
-            />
-
-            {/* Logo Mercado Pago */}
-            <div className="flex justify-center mb-5 sm:mb-6">
-              <div className="scale-75 sm:scale-100">
-                <MercadoPagoIcon />
-              </div>
-            </div>
-
-            {/* Información de transferencia */}
-            <div 
-              className="text-center mb-6 sm:mb-8 px-2"
-              style={{
-                fontFamily: "var(--font-lato), 'Lato', sans-serif",
-                color: "#4a7a4a",
-                lineHeight: "1.8"
-              }}
-            >
-              <p className="mb-3 sm:mb-4" style={{ fontSize: "clamp(0.9rem, 2.5vw, 1rem)", fontWeight: 500 }}>
-                Si preferís podés transferir a la siguiente cuenta:
-              </p>
-              
-              <div style={{ fontSize: "clamp(0.85rem, 2.5vw, 0.95rem)" }}>
-                <p className="break-words"><strong style={{ color: "#2d5a2d" }}>Titular:</strong> Juan de la Palotes</p>
-                <p className="break-words"><strong style={{ color: "#2d5a2d" }}>Alias:</strong> transferime.a.esa.cuenta</p>
-                <p className="break-words">
-                  <strong style={{ color: "#2d5a2d" }}>CBU:</strong>{" "}
-                  <span style={{ color: "#009EE3", fontWeight: 600 }}>03030456</span>
-                </p>
-              </div>
-            </div>
-
-            {/* Info icon */}
-            <div className="flex justify-center mb-5 sm:mb-6">
-              <div 
-                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center"
-                style={{
-                  border: "2px solid #b8962e",
-                  color: "#b8962e",
-                  fontSize: "1.1rem",
-                  fontWeight: 700
-                }}
-              >
-                i
-              </div>
-            </div>
-
-            {/* Botón Volver */}
-            <div className="flex justify-center">
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="px-8 sm:px-10 py-2.5 sm:py-3 rounded-lg transition-all"
-                style={{
-                  background: "#2d5a2d",
-                  color: "#fff",
-                  fontFamily: "var(--font-lato), 'Lato', sans-serif",
-                  fontSize: "clamp(0.9rem, 2.5vw, 1rem)",
-                  fontWeight: 600,
-                  border: "none",
-                  boxShadow: "0 4px 12px rgba(45, 90, 45, 0.3)",
-                }}
-                onMouseEnter={(e) => {
-                  (e.target as HTMLButtonElement).style.background = "#4a7a4a"
-                  ;(e.target as HTMLButtonElement).style.transform = "translateY(-2px)"
-                  ;(e.target as HTMLButtonElement).style.boxShadow = "0 6px 16px rgba(45, 90, 45, 0.4)"
-                }}
-                onMouseLeave={(e) => {
-                  (e.target as HTMLButtonElement).style.background = "#2d5a2d"
-                  ;(e.target as HTMLButtonElement).style.transform = "translateY(0)"
-                  ;(e.target as HTMLButtonElement).style.boxShadow = "0 4px 12px rgba(45, 90, 45, 0.3)"
-                }}
-              >
-                Volver
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </>
   )
 }
