@@ -287,7 +287,21 @@ export default function GiftsSection() {
                   fontStyle: "italic",
                 }}
               >
-                👆 Completa la checklist arriba
+                👆 Completa la checklist arriba para activar el botón
+              </p>
+            )}
+
+            {/* Success message when all items are checked */}
+            {checkedItems.every(item => item) && (
+              <p
+                className="text-xs sm:text-sm mt-4"
+                style={{
+                  color: "#2d5a2d",
+                  fontStyle: "italic",
+                  fontWeight: 600,
+                }}
+              >
+                ✓ ¡Estás listo para la fiesta! Confirma tu asistencia
               </p>
             )}
           </div>

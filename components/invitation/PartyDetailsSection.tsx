@@ -37,14 +37,6 @@ export default function PartyDetailsSection() {
           <div className="w-full flex flex-col items-center gap-2 sm:gap-3 border-b border-[#b8962e33] pb-5 sm:pb-7">
             <p className="label-text text-xs sm:text-sm">Lugar</p>
             <p className="body-text font-bold" style={{ fontSize: "clamp(0.95rem, 3vw, 1.1rem)" }}>Salón Aoma</p>
-            <a
-              href="https://wa.me/5492494275937?text=Hola!+Confirmo+mi+asistencia+a+los+XV+de+Julieta+%F0%9F%8E%89"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-premium mt-2 text-sm sm:text-base ripple-effect"
-            >
-              Confirmar asistencia
-            </a>
           </div>
 
           {/* Address */}

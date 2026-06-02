@@ -6,7 +6,6 @@ import HeroSection from "@/components/invitation/HeroSection"
 import CountdownSection from "@/components/invitation/CountdownSection"
 import GuestSection from "@/components/invitation/GuestSection"
 import PartyDetailsSection from "@/components/invitation/PartyDetailsSection"
-import ConfirmationSection from "@/components/invitation/ConfirmationSection"
 import GallerySection from "@/components/invitation/GallerySection"
 import FiestaSection from "@/components/invitation/FiestaSection"
 import GiftsSection from "@/components/invitation/GiftsSection"
@@ -64,12 +63,6 @@ export default function InvitationPage() {
         <div className="relative">
           <ScrollPlant src={P5} style={{ top: "15%", left: -16 }} width={210} height={210} />
           <PartyDetailsSection />
-        </div>
-
-        {/* ── CONFIRMATION ─────────────────────────────────────── */}
-        <div className="relative" id="confirmacion">
-          <ScrollPlant src={P6} style={{ top: "20%", right: -12 }} width={240} height={220} />
-          <ConfirmationSection />
         </div>
 
         {/* ── GALLERY ──────────────────────────────────────────── */}
