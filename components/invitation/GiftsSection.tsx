@@ -230,7 +230,7 @@ export default function GiftsSection() {
 
           {/* Mini aclaración */}
           <p
-            className="text-xs sm:text-sm mb-6 sm:mb-8 px-4"
+            className="text-xs sm:text-sm mb-8 sm:mb-12 px-4"
             style={{
               color: "#4a7a4a",
               fontStyle: "italic",
@@ -239,22 +239,38 @@ export default function GiftsSection() {
           >
             ✓ Marca todas las casillas para confirmar tu asistencia
           </p>
+        </div>
 
-          {/* Confirmation Section */}
-          <div className="mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-[rgba(184,150,46,0.2)]">
-            <h3
-              className="text-lg sm:text-xl font-bold mb-2"
-              style={{ color: "#2d5a2d" }}
-            >
-              Confirmación de Asistencia
-            </h3>
-            <p
-              className="text-sm sm:text-base mb-6 text-[#4a7a4a]"
-              style={{ fontStyle: "italic" }}
-            >
-              Es importante que confirmes tu asistencia
-            </p>
+        <div className="mt-8 sm:mt-12">
+          <ButterflyDivider />
+        </div>
+      </section>
 
+      {/* Confirmation Section - Same style as PartyDetailsSection */}
+      <section className="relative py-14 px-4 sm:px-6 overflow-hidden section-tinted">
+        <div className="relative z-10 flex justify-center">
+          <div className="glass-card w-full max-w-sm p-6 sm:p-10 flex flex-col items-center text-center gap-6 sm:gap-8 rounded-3xl">
+
+            {/* Icon con efecto glow */}
+            <div className="glow-gold rounded-full p-4" style={{ color: "#b8962e" }}>
+              <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+            </div>
+
+            <h2 className="heading-display gradient-text-premium" style={{ fontSize: "clamp(1.8rem, 5vw, 2.8rem)" }}>
+              Confirmación
+            </h2>
+
+            {/* Description */}
+            <div className="w-full flex flex-col items-center gap-2 sm:gap-3">
+              <p className="body-text font-semibold" style={{ fontSize: "clamp(0.95rem, 3vw, 1.1rem)", color: "#4a7a4a" }}>
+                Es importante que confirmes tu asistencia
+              </p>
+            </div>
+
+            {/* Confirmation Button */}
             <a
               href="https://wa.me/5492494275937?text=¡Hola!+Confirmo+mi+asistencia+a+los+XV+de+Julieta+%F0%9F%8E%89+He+preparado+todos+los+ítems+de+la+checklist."
               onClick={(e) => {
@@ -263,54 +279,44 @@ export default function GiftsSection() {
                   e.preventDefault()
                 }
               }}
-              className={`inline-block px-8 sm:px-12 py-3 sm:py-4 rounded-full transition-all duration-300 font-semibold text-center w-full sm:w-auto`}
+              className={`mt-4 text-sm sm:text-base ripple-effect transition-all duration-300`}
               style={{
-                background: checkedItems.every(item => item)
-                  ? "#2d5a2d"
-                  : "#d4d4d4",
-                color: checkedItems.every(item => item)
-                  ? "#fff"
-                  : "#888888",
-                border: checkedItems.every(item => item)
-                  ? "2px solid #2d5a2d"
-                  : "2px solid #d4d4d4",
-                cursor: checkedItems.every(item => item)
-                  ? "pointer"
-                  : "not-allowed",
-                boxShadow: checkedItems.every(item => item)
-                  ? "0 4px 16px rgba(45, 90, 45, 0.2)"
-                  : "none",
-                opacity: checkedItems.every(item => item) ? 1 : 0.6,
-              }}
-              onMouseEnter={(e) => {
-                if (checkedItems.every(item => item)) {
-                  (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)"
-                  ;(e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 6px 20px rgba(45, 90, 45, 0.3)"
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (checkedItems.every(item => item)) {
-                  (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)"
-                  ;(e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 16px rgba(45, 90, 45, 0.2)"
-                }
+                pointerEvents: checkedItems.every(item => item) ? "auto" : "none",
+                opacity: checkedItems.every(item => item) ? 1 : 0.5,
               }}
               title={checkedItems.every(item => item) ? "" : "Debes marcar todas las casillas para confirmar"}
               target={checkedItems.every(item => item) ? "_blank" : undefined}
               rel={checkedItems.every(item => item) ? "noopener noreferrer" : undefined}
             >
-              Confirmar Asistencia
+              <span
+                className={`inline-block px-6 sm:px-8 py-2 sm:py-3 rounded-full font-semibold transition-all duration-300`}
+                style={{
+                  background: checkedItems.every(item => item)
+                    ? "linear-gradient(135deg, rgba(184, 150, 46, 0.1), rgba(212, 185, 106, 0.1))"
+                    : "rgba(200, 200, 200, 0.1)",
+                  border: checkedItems.every(item => item)
+                    ? "2px solid transparent"
+                    : "2px solid rgba(200, 200, 200, 0.3)",
+                  color: checkedItems.every(item => item)
+                    ? "#2d5a2d"
+                    : "#888888",
+                  cursor: checkedItems.every(item => item) ? "pointer" : "not-allowed",
+                }}
+              >
+                Confirmar Asistencia
+              </span>
             </a>
 
             {/* Helper message when not all items are checked */}
             {!checkedItems.every(item => item) && (
               <p
-                className="text-xs sm:text-sm mt-3 text-center"
+                className="text-xs sm:text-sm mt-3"
                 style={{
                   color: "#b8962e",
                   fontStyle: "italic",
                 }}
               >
-                👆 Completa la checklist arriba para activar el botón
+                👆 Completa la checklist arriba
               </p>
             )}
           </div>
