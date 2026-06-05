@@ -71,34 +71,37 @@ function MusicModal({ onClose }: MusicModalProps) {
 export default function MusicController() {
   const [showModal, setShowModal] = useState(true)
   const [isPlaying, setIsPlaying] = useState(false)
-  const [shouldPlay, setShouldPlay] = useState(false)
   const audioRef = useRef<HTMLAudioElement | null>(null)
 
-  useEffect(() => {
-    // Crear el elemento de audio solo en el cliente
-    if (typeof window !== 'undefined' && !audioRef.current) {
-      audioRef.current = new Audio()
-      audioRef.current.loop = true
-      audioRef.current.volume = 0.5
-      audioRef.current.preload = 'auto'
+  const startAudio = () => {
+    if (typeof window === 'undefined') return
+    
+    if (!audioRef.current) {
+      const audio = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_d1718ab41b.mp3")
+      audio.loop = true
+      audio.volume = 0.5
       
-      // URL del audio - REEMPLAZAR CON TU ARCHIVO MP3
-      audioRef.current.src = "https://cdn.pixabay.com/download/audio/2022/03/15/audio_d1718ab41b.mp3"
-      
-      // Eventos para mejor compatibilidad móvil
-      audioRef.current.addEventListener('loadeddata', () => {
-        console.log('Audio cargado y listo')
-      })
-      
-      audioRef.current.addEventListener('error', (e) => {
+      audio.addEventListener('error', (e) => {
         console.error('Error al cargar audio:', e)
       })
+      
+      audioRef.current = audio
     }
+    
+    audioRef.current.play()
+      .then(() => {
+        setIsPlaying(true)
+      })
+      .catch(err => {
+        console.error('Error al reproducir audio:', err)
+        setIsPlaying(false)
+      })
+  }
 
+  useEffect(() => {
     return () => {
       if (audioRef.current) {
         audioRef.current.pause()
-        audioRef.current.src = ''
         audioRef.current = null
       }
     }
@@ -106,45 +109,17 @@ export default function MusicController() {
 
   const handleModalClose = (withMusic: boolean) => {
     setShowModal(false)
-    if (withMusic && audioRef.current) {
-      setShouldPlay(true)
-      
-      // Intentar cargar y reproducir
-      const playAudio = () => {
-        if (!audioRef.current) return
-        
-        audioRef.current.load() // Importante para móviles
-        audioRef.current.play()
-          .then(() => {
-            setIsPlaying(true)
-            console.log('Música reproduciendo correctamente')
-          })
-          .catch(err => {
-            console.log('Error al reproducir:', err)
-            // Intentar nuevamente después de interacción del usuario
-            setIsPlaying(false)
-          })
-      }
-      
-      // Ejecutar inmediatamente
-      playAudio()
-      
-      // Añadir listener para interacción táctil en móviles
-      const handleFirstInteraction = () => {
-        if (audioRef.current && !isPlaying) {
-          playAudio()
-        }
-        document.removeEventListener('touchstart', handleFirstInteraction)
-        document.removeEventListener('click', handleFirstInteraction)
-      }
-      
-      document.addEventListener('touchstart', handleFirstInteraction, { once: true })
-      document.addEventListener('click', handleFirstInteraction, { once: true })
+    if (withMusic) {
+      // Activar y reproducir el audio dentro del click handler
+      startAudio()
     }
   }
 
   const toggleMusic = () => {
-    if (!audioRef.current) return
+    if (!audioRef.current) {
+      startAudio()
+      return
+    }
 
     if (isPlaying) {
       audioRef.current.pause()
@@ -152,7 +127,7 @@ export default function MusicController() {
     } else {
       audioRef.current.play()
         .then(() => setIsPlaying(true))
-        .catch(err => console.log('Error al reproducir:', err))
+        .catch(err => console.error('Error al reproducir:', err))
     }
   }
 
