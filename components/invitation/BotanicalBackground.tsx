@@ -32,13 +32,13 @@ export function ScrollPlant({
       let newWidth = width
       let newHeight = height
       let newCoordinates = { top: 0, left: 0, right: 'auto', bottom: 'auto' }
-      let newOpacity = 0.5
+      let newOpacity = 1.0
 
       if (screenWidth < 640) {
-        // Móvil pequeño (< 640px) - Plantas un poco más grandes y traslúcidas
+        // Móvil pequeño (< 640px) - Plantas un poco más grandes
         newWidth = width * 0.7
         newHeight = height * 0.7
-        newOpacity = 0.25
+        newOpacity = 1.0
         
         // Coordenadas adaptadas para móvil
         if (position === 'top-left' || position === 'bottom-left') {
@@ -50,7 +50,7 @@ export function ScrollPlant({
         // Tablet pequeño (640px - 768px)
         newWidth = width * 0.8
         newHeight = height * 0.8
-        newOpacity = 0.35
+        newOpacity = 1.0
         
         if (position === 'top-left' || position === 'bottom-left') {
           newCoordinates = { top: 20, left: -45, right: 'auto', bottom: 'auto' }
@@ -61,7 +61,7 @@ export function ScrollPlant({
         // Tablet (768px - 1024px)
         newWidth = width * 0.9
         newHeight = height * 0.9
-        newOpacity = 0.45
+        newOpacity = 1.0
         
         if (position === 'top-left' || position === 'bottom-left') {
           newCoordinates = { top: 40, left: -50, right: 'auto', bottom: 'auto' }
@@ -72,7 +72,7 @@ export function ScrollPlant({
         // Desktop (>= 1024px)
         newWidth = width
         newHeight = height
-        newOpacity = 0.5
+        newOpacity = 1.0
         
         if (position === 'top-left' || position === 'bottom-left') {
           newCoordinates = { top: 50, left: -55, right: 'auto', bottom: 'auto' }
@@ -105,6 +105,7 @@ export function ScrollPlant({
 
   // Combinar estilos personalizados con los calculados
   const finalStyle = {
+    zIndex: 1,
     ...style,
     ...coordinates,
     width: dimensions.width,
@@ -114,7 +115,6 @@ export function ScrollPlant({
     opacity: visible ? opacity : 0,
     transform: visible ? "translateY(0px) scale(1)" : "translateY(50px) scale(0.92)",
     willChange: "transform, opacity",
-    zIndex: 1,
   }
 
   return (

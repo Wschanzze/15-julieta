@@ -1,5 +1,7 @@
 "use client"
 
+import { useState } from "react"
+
 // Inline SVG icons — refined, thin-stroke, elegant
 const IconMusic = () => (
   <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#b8962e" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -80,7 +82,17 @@ const FIESTA_CARDS = [
   },
 ]
 
-export default function FiestaSection() {
+interface FiestaSectionProps {
+  onSuggestSong: (song: string) => void
+  onSetDietaryRestriction: (diet: string) => void
+}
+
+export default function FiestaSection({ onSuggestSong, onSetDietaryRestriction }: FiestaSectionProps) {
+  const [songInput, setSongInput] = useState("")
+  const [isConfirmed, setIsConfirmed] = useState(false)
+  const [dietInput, setDietInput] = useState("")
+  const [isDietConfirmed, setIsDietConfirmed] = useState(false)
+
   return (
     <section id="fiesta" className="relative py-16 px-6 overflow-visible">
       {/* Section header */}
@@ -117,9 +129,19 @@ export default function FiestaSection() {
         </p>
       </div>
 
-      {/* Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        {FIESTA_CARDS.map((card) => (
+      {/* Cards with background flowers peeking out */}
+      <div className="relative max-w-5xl mx-auto">
+        {/* Flower behind the left card on larger screens */}
+        <div className="absolute -top-10 -left-8 z-0 pointer-events-none w-28 h-28 hidden md:block select-none">
+          <img src="/Flores/Grupo02_c.png" alt="" className="w-full h-full object-contain -rotate-45" />
+        </div>
+        {/* Flower behind the right card on larger screens */}
+        <div className="absolute -bottom-8 -right-8 z-0 pointer-events-none w-32 h-32 hidden md:block select-none">
+          <img src="/Flores/Grupo01_b.png" alt="" className="w-full h-full object-contain rotate-12" />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+          {FIESTA_CARDS.map((card) => (
           <div
             key={card.title}
             className="relative flex flex-col items-center text-center overflow-hidden"
@@ -209,29 +231,100 @@ export default function FiestaSection() {
 
             {/* Description */}
             <p
-              className="flex-1 leading-relaxed"
+              className="leading-relaxed"
               style={{
                 fontFamily: "var(--font-lato), 'Lato', sans-serif",
                 fontSize: "0.93rem",
                 fontWeight: 400,
                 color: "#4a7a4a",
-                marginBottom: "2rem",
+                marginBottom: (card.tag === "Playlist" || card.tag === "Información") ? "1rem" : "2rem",
               }}
             >
               {card.desc}
             </p>
 
-            {/* Button */}
-            <a
-              href={card.btnHref}
-              target={card.btnHref.startsWith("http") ? "_blank" : undefined}
-              rel={card.btnHref.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="fiesta-btn"
-            >
-              {card.btnLabel}
-            </a>
+            {/* Input and Button for Playlist, or Información, or standard Button for others */}
+            {card.tag === "Playlist" ? (
+              <div className="w-full flex flex-col gap-3 mt-auto">
+                <input
+                  type="text"
+                  placeholder="Escribe la canción aquí..."
+                  value={songInput}
+                  onChange={(e) => {
+                    setSongInput(e.target.value)
+                    setIsConfirmed(false)
+                  }}
+                  className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-1 focus:ring-[#b8962e] text-center text-sm"
+                  style={{
+                    borderColor: "rgba(184, 150, 46, 0.4)",
+                    backgroundColor: "rgba(255, 254, 251, 0.8)",
+                    fontFamily: "var(--font-lato), sans-serif",
+                    color: "#2d5a2d",
+                  }}
+                />
+                <button
+                  onClick={() => {
+                    if (songInput.trim()) {
+                      onSuggestSong(songInput.trim())
+                      setIsConfirmed(true)
+                    }
+                  }}
+                  className="fiesta-btn w-full border-0 cursor-pointer transition-all flex items-center justify-center"
+                  style={{
+                    backgroundColor: isConfirmed ? "#2d5a2d" : undefined,
+                    color: isConfirmed ? "#fff" : undefined,
+                  }}
+                >
+                  {isConfirmed ? "✓ Confirmado" : "Confirmar"}
+                </button>
+              </div>
+            ) : card.tag === "Información" ? (
+              <div className="w-full flex flex-col gap-3 mt-auto">
+                <input
+                  type="text"
+                  placeholder="Alergias, vegetariano, etc..."
+                  value={dietInput}
+                  onChange={(e) => {
+                    setDietInput(e.target.value)
+                    setIsDietConfirmed(false)
+                  }}
+                  className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-1 focus:ring-[#b8962e] text-center text-sm"
+                  style={{
+                    borderColor: "rgba(184, 150, 46, 0.4)",
+                    backgroundColor: "rgba(255, 254, 251, 0.8)",
+                    fontFamily: "var(--font-lato), sans-serif",
+                    color: "#2d5a2d",
+                  }}
+                />
+                <button
+                  onClick={() => {
+                    if (dietInput.trim()) {
+                      onSetDietaryRestriction(dietInput.trim())
+                      setIsDietConfirmed(true)
+                    }
+                  }}
+                  className="fiesta-btn w-full border-0 cursor-pointer transition-all flex items-center justify-center"
+                  style={{
+                    backgroundColor: isDietConfirmed ? "#2d5a2d" : undefined,
+                    color: isDietConfirmed ? "#fff" : undefined,
+                  }}
+                >
+                  {isDietConfirmed ? "✓ Confirmado" : "Confirmar"}
+                </button>
+              </div>
+            ) : (
+              <a
+                href={card.btnHref}
+                target={card.btnHref.startsWith("http") ? "_blank" : undefined}
+                rel={card.btnHref.startsWith("http") ? "noopener noreferrer" : undefined}
+                className="fiesta-btn mt-auto"
+              >
+                {card.btnLabel}
+              </a>
+            )}
           </div>
         ))}
+      </div>
       </div>
     </section>
   )

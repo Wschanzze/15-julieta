@@ -6,8 +6,17 @@ export default function PartyDetailsSection() {
 
   return (
     <section className="relative py-14 px-4 sm:px-6 overflow-hidden section-tinted">
-      <div className="relative z-10 flex justify-center">
-        <div className="glass-card w-full max-w-sm p-6 sm:p-10 flex flex-col items-center text-center gap-6 sm:gap-8 rounded-3xl">
+      <div className="relative z-10 flex justify-center w-full max-w-sm mx-auto">
+        {/* Flower peeking out top-right */}
+        <div className="absolute -top-10 -right-10 z-0 pointer-events-none w-28 h-28 select-none">
+          <img src="/Flores/Grupo02_a.png" alt="" className="w-full h-full object-contain rotate-45" />
+        </div>
+        {/* Flower peeking out bottom-left */}
+        <div className="absolute -bottom-8 -left-8 z-0 pointer-events-none w-24 h-24 select-none">
+          <img src="/Flores/Grupo02_b.png" alt="" className="w-full h-full object-contain -rotate-12" />
+        </div>
+
+        <div className="glass-card w-full p-6 sm:p-10 flex flex-col items-center text-center gap-6 sm:gap-8 rounded-3xl relative z-10">
 
           {/* Icon con efecto glow */}
           <div className="glow-gold rounded-full p-4" style={{ color: "#b8962e" }}>

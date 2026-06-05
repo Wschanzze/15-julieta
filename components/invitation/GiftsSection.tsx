@@ -82,8 +82,18 @@ const CHECKLIST_ITEMS = [
   },
 ]
 
-export default function GiftsSection() {
+interface GiftsSectionProps {
+  suggestedSong?: string
+  dietaryRestriction?: string
+}
+
+export default function GiftsSection({ suggestedSong = "", dietaryRestriction = "" }: GiftsSectionProps) {
   const [checkedItems, setCheckedItems] = useState<boolean[]>(new Array(CHECKLIST_ITEMS.length).fill(false))
+
+  const baseMessage = "Hola! Confirmo mi asistencia a los XV de Julieta 🎉 He preparado todos los ítems de la checklist."
+  const songSuffix = suggestedSong ? `\n*Canción que no puede faltar*: ${suggestedSong}` : ""
+  const dietSuffix = dietaryRestriction ? `\n*Restricción alimenticia*: ${dietaryRestriction}` : ""
+  const whatsappUrl = `https://wa.me/5492494275937?text=${encodeURIComponent(baseMessage + songSuffix + dietSuffix)}`
 
   const toggleCheck = (index: number) => {
     const newChecked = [...checkedItems]
@@ -103,8 +113,18 @@ export default function GiftsSection() {
             Lo esencial para que esta noche sea inolvidable...
           </p>
 
-          {/* Checklist Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6 w-full max-w-6xl mx-auto px-2">
+          {/* Checklist Grid Container with background flowers peeking out */}
+          <div className="relative w-full max-w-6xl mx-auto px-2">
+            {/* Flower behind checklist left */}
+            <div className="absolute -top-12 -left-12 z-0 pointer-events-none w-32 h-32 hidden lg:block select-none">
+              <img src="/Flores/Grupo02_a.png" alt="" className="w-full h-full object-contain -rotate-12" />
+            </div>
+            {/* Flower behind checklist right */}
+            <div className="absolute -bottom-12 -right-12 z-0 pointer-events-none w-36 h-36 hidden lg:block select-none">
+              <img src="/Flores/Grupo03.png" alt="" className="w-full h-full object-contain rotate-45" />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6 relative z-10">
             {CHECKLIST_ITEMS.map((item, idx) => (
               <button
                 key={idx}
@@ -200,6 +220,7 @@ export default function GiftsSection() {
               </button>
             ))}
           </div>
+          </div>
 
           {/* Counter */}
           <div className="mt-10 sm:mt-12 flex items-center justify-center gap-2 mb-6 sm:mb-8">
@@ -245,7 +266,7 @@ export default function GiftsSection() {
             </p>
 
             <a
-              href="https://wa.me/5492494275937?text=Hola!+Confirmo+mi+asistencia+a+los+XV+de+Julieta+%F0%9F%8E%89+He+preparado+todos+los+ítems+de+la+checklist."
+              href={whatsappUrl}
               onClick={(e) => {
                 const allChecked = checkedItems.every(item => item)
                 if (!allChecked) {

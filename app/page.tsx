@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from "react"
 import BotanicalBackground from "@/components/invitation/BotanicalBackground"
 import { ScrollPlant } from "@/components/invitation/BotanicalBackground"
 import TopNav from "@/components/invitation/TopNav"
@@ -12,17 +15,20 @@ import GiftsSection from "@/components/invitation/GiftsSection"
 import FooterSection from "@/components/invitation/FooterSection"
 import FloatingParticles from "@/components/invitation/FloatingParticles"
 
-// Plant image URLs
-const P1 = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Grupo02_c-3EiTan9ZCsZJZsAYp2lXd8OopYcOkh.png"
-const P2 = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Grupo01_c-Y9noh9pBBOxGvYxqRKSQupQRtwNhJQ.png"
-const P3 = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Grupo01_a-I01qVd94xKuPee9GLiy6wCkgD27VU8.png"
-const P4 = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Grupo01_b-OZipqt0hhFLK7aDXflBJX5nVhpR8l4.png"
-const P5 = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Grupo02_a-3Q0Lh62lJ7fFCaiw5j2DxCPo9y7YqO.png"
-const P6 = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Grupo03-vV8ZmLn8SJugR4qkyFXat32JLIll9m.png"
-const P7 = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Grupo04-yeHHU1ZvFscmQ2KzRrl96BzREsbVis.png"
-const P8 = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Grupo02_b-4bqiU83MCRvhcyC6c4OLFtI92JhNjo.png"
+// Plant image URLs (Flores locales)
+const P1 = "/Flores/Grupo02_c.png"
+const P2 = "/Flores/Grupo01_c.png"
+const P3 = "/Flores/Grupo02_b.png"
+const P4 = "/Flores/Grupo01_b.png"
+const P5 = "/Flores/Grupo02_a.png"
+const P6 = "/Flores/Grupo03.png"
+const P7 = "/Flores/Grupo02_c.png"
+const P8 = "/Flores/Grupo02_b.png"
 
 export default function InvitationPage() {
+  const [suggestedSong, setSuggestedSong] = useState("")
+  const [dietaryRestriction, setDietaryRestriction] = useState("")
+
   return (
     <main className="relative min-h-screen bg-[#fafafa] overflow-x-hidden">
       {/* Fixed white background */}
@@ -50,6 +56,7 @@ export default function InvitationPage() {
         {/* ── COUNTDOWN ────────────────────────────────────────── */}
         <div className="relative">
           <ScrollPlant src={P3} position="top-left" width={150} height={150} />
+          <ScrollPlant src={P6} position="top-right" width={160} height={160} />
           <CountdownSection />
         </div>
 
@@ -68,19 +75,26 @@ export default function InvitationPage() {
         {/* ── GALLERY ──────────────────────────────────────────── */}
         <div className="relative">
           <ScrollPlant src={P7} position="top-left" width={180} height={170} />
+          <ScrollPlant src={P1} position="bottom-right" width={160} height={150} />
           <GallerySection />
         </div>
 
         {/* ── FIESTA CARDS ─────────────────────────────────────── */}
         <div className="relative" id="fiesta">
           <ScrollPlant src={P8} position="top-right" width={170} height={150} />
-          <FiestaSection />
+          <FiestaSection 
+            onSuggestSong={setSuggestedSong} 
+            onSetDietaryRestriction={setDietaryRestriction} 
+          />
         </div>
 
         {/* ── GIFTS ────────────────────────────────────────────── */}
         <div className="relative">
           <ScrollPlant src={P3} position="top-right" width={150} height={150} />
-          <GiftsSection />
+          <GiftsSection 
+            suggestedSong={suggestedSong} 
+            dietaryRestriction={dietaryRestriction} 
+          />
         </div>
 
         {/* ── FOOTER ───────────────────────────────────────────── */}
