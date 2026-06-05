@@ -40,46 +40,46 @@ export default function InvitationPage() {
 
         {/* ── HERO ─────────────────────────────────────────────── */}
         <div className="relative">
-          {/* Top-left plant - optimizado para móvil sin tapar texto */}
-          <ScrollPlant src={P1} style={{ top: 120, left: -45 }} width={160} height={180} />
-          {/* Top-right plant - optimizado para móvil sin tapar texto */}
-          <ScrollPlant src={P2} style={{ top: 140, right: -45 }} width={180} height={170} />
+          {/* Top-left plant - adaptativo a todas las pantallas */}
+          <ScrollPlant src={P1} position="top-left" width={180} height={200} />
+          {/* Top-right plant - adaptativo a todas las pantallas */}
+          <ScrollPlant src={P2} position="top-right" width={200} height={190} />
           <HeroSection />
         </div>
 
         {/* ── COUNTDOWN ────────────────────────────────────────── */}
         <div className="relative">
-          <ScrollPlant src={P3} style={{ top: "30%", left: -45 }} width={140} height={140} />
+          <ScrollPlant src={P3} position="top-left" width={150} height={150} />
           <CountdownSection />
         </div>
 
         {/* ── GUEST MESSAGE ─────────────────────────────────────── */}
         <div className="relative">
-          <ScrollPlant src={P4} style={{ top: "20%", right: -45 }} width={160} height={150} />
+          <ScrollPlant src={P4} position="top-right" width={170} height={160} />
           <GuestSection />
         </div>
 
         {/* ── PARTY DETAILS ─────────────────────────────────────── */}
         <div className="relative">
-          <ScrollPlant src={P5} style={{ top: "25%", left: -40 }} width={150} height={150} />
+          <ScrollPlant src={P5} position="top-left" width={160} height={160} />
           <PartyDetailsSection />
         </div>
 
         {/* ── GALLERY ──────────────────────────────────────────── */}
         <div className="relative">
-          <ScrollPlant src={P7} style={{ top: "20%", left: -45 }} width={170} height={160} />
+          <ScrollPlant src={P7} position="top-left" width={180} height={170} />
           <GallerySection />
         </div>
 
         {/* ── FIESTA CARDS ─────────────────────────────────────── */}
         <div className="relative" id="fiesta">
-          <ScrollPlant src={P8} style={{ top: "15%", right: -40 }} width={160} height={140} />
+          <ScrollPlant src={P8} position="top-right" width={170} height={150} />
           <FiestaSection />
         </div>
 
         {/* ── GIFTS ────────────────────────────────────────────── */}
         <div className="relative">
-          <ScrollPlant src={P3} style={{ top: "30%", right: -45 }} width={140} height={140} />
+          <ScrollPlant src={P3} position="top-right" width={150} height={150} />
           <GiftsSection />
         </div>
 
