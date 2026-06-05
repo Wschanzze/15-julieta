@@ -41,45 +41,45 @@ export default function InvitationPage() {
         {/* ── HERO ─────────────────────────────────────────────── */}
         <div className="relative">
           {/* Top-left plant */}
-          <ScrollPlant src={P1} style={{ top: 60, left: -20 }} width={220} height={260} />
+          <ScrollPlant src={P1} style={{ top: 60, left: -20 }} width={180} height={200} className="hidden sm:block" />
           {/* Top-right plant */}
-          <ScrollPlant src={P2} style={{ top: 40, right: -16 }} width={260} height={250} />
+          <ScrollPlant src={P2} style={{ top: 40, right: -16 }} width={200} height={190} className="hidden sm:block" />
           <HeroSection />
         </div>
 
         {/* ── COUNTDOWN ────────────────────────────────────────── */}
         <div className="relative">
-          <ScrollPlant src={P3} style={{ top: "20%", left: -24 }} width={220} height={210} />
+          <ScrollPlant src={P3} style={{ top: "20%", left: -24 }} width={150} height={150} className="hidden sm:block" />
           <CountdownSection />
         </div>
 
         {/* ── GUEST MESSAGE ─────────────────────────────────────── */}
         <div className="relative">
-          <ScrollPlant src={P4} style={{ top: "10%", right: -20 }} width={250} height={220} />
+          <ScrollPlant src={P4} style={{ top: "10%", right: -20 }} width={170} height={160} className="hidden sm:block" />
           <GuestSection />
         </div>
 
         {/* ── PARTY DETAILS ─────────────────────────────────────── */}
         <div className="relative">
-          <ScrollPlant src={P5} style={{ top: "15%", left: -16 }} width={210} height={210} />
+          <ScrollPlant src={P5} style={{ top: "15%", left: -16 }} width={160} height={160} className="hidden sm:block" />
           <PartyDetailsSection />
         </div>
 
         {/* ── GALLERY ──────────────────────────────────────────── */}
         <div className="relative">
-          <ScrollPlant src={P7} style={{ top: "10%", left: -16 }} width={240} height={220} />
+          <ScrollPlant src={P7} style={{ top: "10%", left: -16 }} width={180} height={170} className="hidden sm:block" />
           <GallerySection />
         </div>
 
         {/* ── FIESTA CARDS ─────────────────────────────────────── */}
         <div className="relative" id="fiesta">
-          <ScrollPlant src={P8} style={{ top: "5%", right: -14 }} width={230} height={200} />
+          <ScrollPlant src={P8} style={{ top: "5%", right: -14 }} width={170} height={150} className="hidden sm:block" />
           <FiestaSection />
         </div>
 
         {/* ── GIFTS ────────────────────────────────────────────── */}
         <div className="relative">
-          <ScrollPlant src={P3} style={{ top: "20%", right: -16 }} width={200} height={200} />
+          <ScrollPlant src={P3} style={{ top: "20%", right: -16 }} width={150} height={150} className="hidden sm:block" />
           <GiftsSection />
         </div>
 

@@ -74,7 +74,7 @@ export default function MusicController() {
   const iframeRef = useRef<HTMLIFrameElement>(null)
 
   const buildSrc = (autoplay: boolean) =>
-    `https://www.youtube-nocookie.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=${autoplay ? 1 : 0}&loop=1&playlist=${YOUTUBE_VIDEO_ID}&controls=0&mute=0&enablejsapi=0&rel=0`
+    `https://www.youtube-nocookie.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=${autoplay ? 1 : 0}&loop=1&playlist=${YOUTUBE_VIDEO_ID}&controls=0&mute=0&enablejsapi=1&rel=0&modestbranding=1`
 
   const handleModalClose = (withMusic: boolean) => {
     setShowModal(false)
@@ -105,11 +105,11 @@ export default function MusicController() {
         <iframe
           ref={iframeRef}
           src={iframeSrc}
-          allow="autoplay; encrypted-media"
+          allow="autoplay; encrypted-media; accelerometer; gyroscope"
           className="fixed -top-full -left-full w-1 h-1 opacity-0 pointer-events-none"
           aria-hidden="true"
           title="Música de fondo"
-          sandbox="allow-scripts allow-same-origin allow-presentation"
+          sandbox="allow-scripts allow-same-origin allow-presentation allow-autoplay"
         />
       )}
 
