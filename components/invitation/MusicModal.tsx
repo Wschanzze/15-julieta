@@ -44,8 +44,6 @@ function MusicModal({ onClose }: MusicModalProps) {
           Mis XV años
         </p>
 
-        <div className="gold-line mb-6" />
-
         <p className="body-text italic mb-8" style={{ fontSize: "0.9rem", color: "#4a7a4a" }}>
           La música de fondo es parte de la experiencia
         </p>
