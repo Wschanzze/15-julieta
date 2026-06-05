@@ -16,9 +16,6 @@ export default function HeroSection() {
           17.07.2026
         </p>
 
-        {/* Top divider line */}
-        <div className="gold-line mb-8 sm:mb-10" style={{ width: "140px" }} />
-
         {/* Name — dorado con efectos premium */}
         <h1
           className="leading-tight mb-8 sm:mb-10 px-2"
@@ -34,9 +31,6 @@ export default function HeroSection() {
         >
           Julieta
         </h1>
-
-        {/* Bottom divider line */}
-        <div className="gold-line mb-10 sm:mb-12" style={{ width: "140px" }} />
 
         {/* Subtitle */}
         <p
