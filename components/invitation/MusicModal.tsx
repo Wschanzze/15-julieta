@@ -27,8 +27,6 @@ function MusicModal({ onClose }: MusicModalProps) {
           className="absolute bottom-0 left-0 w-24 h-24 object-contain opacity-20 pointer-events-none"
         />
 
-        <div className="gold-line mb-6" />
-
         <p className="label-text mb-3">Bienvenidos a la invitación de</p>
 
         <h2
@@ -44,11 +42,7 @@ function MusicModal({ onClose }: MusicModalProps) {
           Mis XV años
         </p>
 
-        <p className="body-text italic mb-8" style={{ fontSize: "0.9rem", color: "#4a7a4a" }}>
-          La música de fondo es parte de la experiencia
-        </p>
-
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 mb-8">
           <button
             onClick={() => onClose(true)}
             className="btn-gold w-full"
@@ -64,6 +58,10 @@ function MusicModal({ onClose }: MusicModalProps) {
             Ingresar sin música
           </button>
         </div>
+
+        <p className="body-text italic" style={{ fontSize: "0.9rem", color: "#4a7a4a" }}>
+          La música de fondo es parte de la experiencia
+        </p>
       </div>
     </div>
   )
