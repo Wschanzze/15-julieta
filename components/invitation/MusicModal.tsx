@@ -1,8 +1,9 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 
-const YOUTUBE_VIDEO_ID = "dvgZkm1xWPE"
+// URL de la música de fondo (puedes cambiarla por tu archivo MP3)
+const MUSIC_URL = "https://www.youtube.com/watch?v=dvgZkm1xWPE" // Temporal - necesitarás reemplazar con URL de audio directo
 
 interface MusicModalProps {
   onClose: (withMusic: boolean) => void
@@ -70,49 +71,74 @@ function MusicModal({ onClose }: MusicModalProps) {
 export default function MusicController() {
   const [showModal, setShowModal] = useState(true)
   const [isPlaying, setIsPlaying] = useState(false)
-  const [iframeSrc, setIframeSrc] = useState("")
-  const iframeRef = useRef<HTMLIFrameElement>(null)
+  const [shouldPlay, setShouldPlay] = useState(false)
+  const audioRef = useRef<HTMLAudioElement | null>(null)
 
-  const buildSrc = (autoplay: boolean) =>
-    `https://www.youtube-nocookie.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=${autoplay ? 1 : 0}&loop=1&playlist=${YOUTUBE_VIDEO_ID}&controls=0&mute=0&enablejsapi=1&rel=0&modestbranding=1`
+  useEffect(() => {
+    // Crear el elemento de audio solo en el cliente
+    if (typeof window !== 'undefined' && !audioRef.current) {
+      audioRef.current = new Audio()
+      audioRef.current.loop = true
+      audioRef.current.volume = 0.5
+      // URL del video de YouTube convertido a audio
+      // Nota: Para producción, deberías usar un archivo MP3 directo
+      audioRef.current.src = "https://cdn.pixabay.com/download/audio/2022/03/15/audio_d1718ab41b.mp3" // URL de ejemplo
+      
+      // Intentar reproducir cuando el usuario interactúe
+      audioRef.current.addEventListener('canplaythrough', () => {
+        if (shouldPlay && audioRef.current) {
+          audioRef.current.play().catch(err => {
+            console.log('Error al reproducir:', err)
+          })
+        }
+      })
+    }
+
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause()
+        audioRef.current = null
+      }
+    }
+  }, [shouldPlay])
 
   const handleModalClose = (withMusic: boolean) => {
     setShowModal(false)
-    if (withMusic) {
-      setIframeSrc(buildSrc(true))
-      setIsPlaying(true)
+    if (withMusic && audioRef.current) {
+      setShouldPlay(true)
+      audioRef.current.play()
+        .then(() => {
+          setIsPlaying(true)
+        })
+        .catch(err => {
+          console.log('Autoplay bloqueado:', err)
+          // Reintentar después de un breve delay
+          setTimeout(() => {
+            if (audioRef.current) {
+              audioRef.current.play()
+                .then(() => setIsPlaying(true))
+                .catch(() => setIsPlaying(false))
+            }
+          }, 100)
+        })
     }
   }
 
   const toggleMusic = () => {
-    if (!iframeSrc) {
-      setIframeSrc(buildSrc(true))
-      setIsPlaying(true)
-      return
-    }
+    if (!audioRef.current) return
+
     if (isPlaying) {
-      setIframeSrc(buildSrc(false))
+      audioRef.current.pause()
       setIsPlaying(false)
     } else {
-      setIframeSrc(buildSrc(true))
-      setIsPlaying(true)
+      audioRef.current.play()
+        .then(() => setIsPlaying(true))
+        .catch(err => console.log('Error al reproducir:', err))
     }
   }
 
   return (
     <>
-      {iframeSrc && (
-        <iframe
-          ref={iframeRef}
-          src={iframeSrc}
-          allow="autoplay; encrypted-media; accelerometer; gyroscope"
-          className="fixed -top-full -left-full w-1 h-1 opacity-0 pointer-events-none"
-          aria-hidden="true"
-          title="Música de fondo"
-          sandbox="allow-scripts allow-same-origin allow-presentation allow-autoplay"
-        />
-      )}
-
       {showModal && <MusicModal onClose={handleModalClose} />}
 
       {!showModal && (
