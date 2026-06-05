@@ -72,9 +72,9 @@ const FIESTA_CARDS = [
   },
   {
     tag: "Información",
-    title: "Tips y Notas",
+    title: "Restricciones",
     icon: <IconNote />,
-    desc: "Información adicional y detalles importantes para tener en cuenta.",
+    desc: "Queremos que disfrutes al máximo. Contanos si tenés alguna alergia, restricción o menú especial.",
     btnLabel: "+ Info",
     btnHref: "#",
     leafCorner: "top-0 right-0",
