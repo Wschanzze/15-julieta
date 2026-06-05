@@ -109,7 +109,7 @@ export default function GiftsSection() {
               <button
                 key={idx}
                 onClick={() => toggleCheck(idx)}
-                className="group relative flex flex-col items-center text-center p-4 sm:p-6 rounded-2xl transition-all duration-300 cursor-pointer"
+                className="group relative flex flex-col items-center justify-center text-center p-5 sm:p-6 min-h-[160px] rounded-2xl transition-all duration-300 cursor-pointer"
                 style={{
                   background: checkedItems[idx]
                     ? "linear-gradient(135deg, rgba(45, 90, 45, 0.15), rgba(184, 150, 46, 0.1))"
@@ -153,20 +153,9 @@ export default function GiftsSection() {
                   )}
                 </div>
 
-                {/* Icon */}
-                <div
-                  className="mb-3 transition-transform duration-300"
-                  style={{
-                    transform: checkedItems[idx] ? "scale(1.1)" : "scale(1)",
-                    opacity: checkedItems[idx] ? 0.7 : 1,
-                  }}
-                >
-                  {item.icon}
-                </div>
-
                 {/* Emoji accent */}
                 <span
-                  className="text-2xl sm:text-3xl mb-2 transition-transform duration-300 inline-block"
+                  className="text-3xl sm:text-4xl mb-3 transition-transform duration-300 inline-block"
                   style={{
                     transform: checkedItems[idx] ? "rotate(360deg) scale(1.2)" : "rotate(0deg) scale(1)",
                     animation: !checkedItems[idx] ? "floating 3s ease-in-out infinite" : "none",
