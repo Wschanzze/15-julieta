@@ -80,47 +80,66 @@ export default function MusicController() {
       audioRef.current = new Audio()
       audioRef.current.loop = true
       audioRef.current.volume = 0.5
-      // URL del video de YouTube convertido a audio
-      // Nota: Para producción, deberías usar un archivo MP3 directo
-      audioRef.current.src = "https://cdn.pixabay.com/download/audio/2022/03/15/audio_d1718ab41b.mp3" // URL de ejemplo
+      audioRef.current.preload = 'auto'
       
-      // Intentar reproducir cuando el usuario interactúe
-      audioRef.current.addEventListener('canplaythrough', () => {
-        if (shouldPlay && audioRef.current) {
-          audioRef.current.play().catch(err => {
-            console.log('Error al reproducir:', err)
-          })
-        }
+      // URL del audio - REEMPLAZAR CON TU ARCHIVO MP3
+      audioRef.current.src = "https://cdn.pixabay.com/download/audio/2022/03/15/audio_d1718ab41b.mp3"
+      
+      // Eventos para mejor compatibilidad móvil
+      audioRef.current.addEventListener('loadeddata', () => {
+        console.log('Audio cargado y listo')
+      })
+      
+      audioRef.current.addEventListener('error', (e) => {
+        console.error('Error al cargar audio:', e)
       })
     }
 
     return () => {
       if (audioRef.current) {
         audioRef.current.pause()
+        audioRef.current.src = ''
         audioRef.current = null
       }
     }
-  }, [shouldPlay])
+  }, [])
 
   const handleModalClose = (withMusic: boolean) => {
     setShowModal(false)
     if (withMusic && audioRef.current) {
       setShouldPlay(true)
-      audioRef.current.play()
-        .then(() => {
-          setIsPlaying(true)
-        })
-        .catch(err => {
-          console.log('Autoplay bloqueado:', err)
-          // Reintentar después de un breve delay
-          setTimeout(() => {
-            if (audioRef.current) {
-              audioRef.current.play()
-                .then(() => setIsPlaying(true))
-                .catch(() => setIsPlaying(false))
-            }
-          }, 100)
-        })
+      
+      // Intentar cargar y reproducir
+      const playAudio = () => {
+        if (!audioRef.current) return
+        
+        audioRef.current.load() // Importante para móviles
+        audioRef.current.play()
+          .then(() => {
+            setIsPlaying(true)
+            console.log('Música reproduciendo correctamente')
+          })
+          .catch(err => {
+            console.log('Error al reproducir:', err)
+            // Intentar nuevamente después de interacción del usuario
+            setIsPlaying(false)
+          })
+      }
+      
+      // Ejecutar inmediatamente
+      playAudio()
+      
+      // Añadir listener para interacción táctil en móviles
+      const handleFirstInteraction = () => {
+        if (audioRef.current && !isPlaying) {
+          playAudio()
+        }
+        document.removeEventListener('touchstart', handleFirstInteraction)
+        document.removeEventListener('click', handleFirstInteraction)
+      }
+      
+      document.addEventListener('touchstart', handleFirstInteraction, { once: true })
+      document.addEventListener('click', handleFirstInteraction, { once: true })
     }
   }
 

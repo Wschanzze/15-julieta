@@ -14,6 +14,19 @@ export interface ScrollPlantProps {
 export function ScrollPlant({ src, className = "", style, width = 260, height = 240 }: ScrollPlantProps) {
   const ref = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    // Detectar si es móvil
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   useEffect(() => {
     const el = ref.current
@@ -26,23 +39,28 @@ export function ScrollPlant({ src, className = "", style, width = 260, height = 
     return () => observer.disconnect()
   }, [])
 
+  // Ajustar tamaño para móvil (65% del tamaño original)
+  const mobileWidth = isMobile ? width * 0.65 : width
+  const mobileHeight = isMobile ? height * 0.65 : height
+
   return (
     <div
       ref={ref}
       className={`pointer-events-none select-none ${className}`}
       style={{
         ...style,
-        width,
-        height,
+        width: mobileWidth,
+        height: mobileHeight,
         position: "absolute",
         transition: "opacity 1s ease, transform 1s ease",
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0px) scale(1)" : "translateY(50px) scale(0.92)",
         willChange: "transform, opacity",
+        zIndex: 1, // Asegurar que las plantas estén detrás del contenido
       }}
       aria-hidden="true"
     >
-      <Image src={src} alt="" fill className="object-contain" sizes={`${width}px`} />
+      <Image src={src} alt="" fill className="object-contain" sizes={`${mobileWidth}px`} />
     </div>
   )
 }
