@@ -44,7 +44,7 @@ export default function GallerySection() {
       <div className="relative z-10">
 
         <div className="text-center mb-10">
-          <h2 className="heading-display mb-4" style={{ fontSize: "clamp(1.8rem, 5vw, 3rem)" }}>
+          <h2 id="julieta" className="heading-display mb-4 scroll-mt-24" style={{ fontSize: "clamp(1.8rem, 5vw, 3rem)" }}>
             La protagonista de esta historia
           </h2>
           <div className="gold-line my-5" />

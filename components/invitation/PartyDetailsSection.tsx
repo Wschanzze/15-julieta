@@ -5,7 +5,7 @@ export default function PartyDetailsSection() {
     "https://www.google.com/maps/search/?api=1&query=Juan+B.+Justo+488+Salón+Aoma"
 
   return (
-    <section className="relative py-14 px-4 sm:px-6 overflow-hidden section-tinted">
+    <section id="ubicacion" className="relative py-14 px-4 sm:px-6 overflow-hidden section-tinted scroll-mt-24">
       <div className="relative z-10 flex justify-center w-full max-w-sm mx-auto">
         {/* Flower peeking out top-right */}
         <div className="absolute -top-10 -right-10 z-0 pointer-events-none w-28 h-28 select-none">

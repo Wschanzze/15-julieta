@@ -255,7 +255,7 @@ export default function GiftsSection({ suggestedSong = "", dietaryRestriction = 
 
           {/* Confirmation Section - Inline */}
           <div className="flex flex-col items-center text-center">
-            <h3 className="heading-display mb-4" style={{ fontSize: "clamp(2rem, 5.5vw, 3.2rem)" }}>
+            <h3 id="confirmacion" className="heading-display mb-4 scroll-mt-24" style={{ fontSize: "clamp(2rem, 5.5vw, 3.2rem)" }}>
               Confirmación de asistencia
             </h3>
 
