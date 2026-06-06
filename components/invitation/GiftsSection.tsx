@@ -90,7 +90,7 @@ interface GiftsSectionProps {
 export default function GiftsSection({ suggestedSong = "", dietaryRestriction = "" }: GiftsSectionProps) {
   const [checkedItems, setCheckedItems] = useState<boolean[]>(new Array(CHECKLIST_ITEMS.length).fill(false))
 
-  const baseMessage = "Hola! Confirmo mi asistencia a los XV de Julieta 🎉 He preparado todos los ítems de la checklist."
+  const baseMessage = "¡Hola! Confirmo mi asistencia para celebrar junto a Julieta sus *XV* años. ¡Contando los días para esa gran noche! 🌸✨"
   const songSuffix = suggestedSong ? `\n*Canción que no puede faltar*: ${suggestedSong}` : ""
   const dietSuffix = dietaryRestriction ? `\n*Restricción alimenticia*: ${dietaryRestriction}` : ""
   const whatsappUrl = `https://wa.me/5492494275937?text=${encodeURIComponent(baseMessage + songSuffix + dietSuffix)}`

@@ -123,7 +123,7 @@ export default function FiestaSection({ onSuggestSong, onSetDietaryRestriction }
             lineHeight: 1.1,
           }}
         >
-          Fiesta
+          Sobre la Velada
         </h2>
 
         <div className="gold-line my-6" />
