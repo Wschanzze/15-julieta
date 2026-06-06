@@ -106,12 +106,7 @@ export default function FiestaSection({ onSuggestSong, onSetDietaryRestriction }
     <section id="fiesta" className="relative py-16 px-6 overflow-visible">
       {/* Section header */}
       <div className="text-center mb-12 mt-8">
-        <p
-          className="label-text mb-5"
-          style={{ letterSpacing: "0.3em", fontSize: "0.75rem" }}
-        >
-          LA VELADA
-        </p>
+
 
         <h2
           style={{
@@ -132,9 +127,7 @@ export default function FiestaSection({ onSuggestSong, onSetDietaryRestriction }
           className="body-text italic max-w-md mx-auto"
           style={{ fontSize: "1.05rem", color: "#4a7a4a" }}
         >
-          Hagamos juntos una fiesta épica.{" "}
-          <br className="hidden sm:block" />
-          Aquí algunos detalles a tener en cuenta.
+          Hagamos juntos una fiesta épica.
         </p>
       </div>
 
