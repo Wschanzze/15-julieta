@@ -772,3 +772,15 @@
   animation: softSwayDelicate 12s ease-in-out infinite;
 }
 
+.text-floral-masked {
+  background-image: url('/Flores/FloralTextFill.png');
+  background-size: cover;
+  background-repeat: repeat;
+  background-position: center;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0px 2px 5px rgba(45, 90, 45, 0.18));
+  display: inline-block;
+}
+
