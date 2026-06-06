@@ -754,3 +754,21 @@
   animation: softSwayRight 8s ease-in-out infinite;
 }
 
+@keyframes softSwaySlow {
+  0%, 100% { transform: rotate(-4deg) translateY(0); }
+  50% { transform: rotate(4deg) translateY(-3px) scale(1.02); }
+}
+
+@keyframes softSwayDelicate {
+  0%, 100% { transform: rotate(3deg) translateY(0); }
+  50% { transform: rotate(-3deg) translateY(-2px) scale(1.01); }
+}
+
+.animate-sway-slow {
+  animation: softSwaySlow 10s ease-in-out infinite;
+}
+
+.animate-sway-delicate {
+  animation: softSwayDelicate 12s ease-in-out infinite;
+}
+
