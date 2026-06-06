@@ -2,9 +2,7 @@
 
 import { useState, useRef, useEffect } from "react"
 
-// URL de la música de fondo (puedes cambiarla por tu archivo MP3)
-const MUSIC_URL = "https://www.youtube.com/watch?v=dvgZkm1xWPE" // Temporal - necesitarás reemplazar con URL de audio directo
-
+// Archivo de música ahora referenciado directamente en el elemento <audio>
 interface MusicModalProps {
   onClose: (withMusic: boolean) => void
 }
@@ -74,38 +72,16 @@ export default function MusicController() {
   const audioRef = useRef<HTMLAudioElement | null>(null)
 
   const startAudio = () => {
-    if (typeof window === 'undefined') return
-    
-    if (!audioRef.current) {
-      const audio = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_d1718ab41b.mp3")
-      audio.loop = true
-      audio.volume = 0.5
-      
-      audio.addEventListener('error', (e) => {
-        console.error('Error al cargar audio:', e)
-      })
-      
-      audioRef.current = audio
+    if (audioRef.current) {
+      audioRef.current.volume = 0.5
+      audioRef.current.play()
+        .then(() => setIsPlaying(true))
+        .catch(err => {
+          console.error('Error al reproducir audio:', err)
+          setIsPlaying(false)
+        })
     }
-    
-    audioRef.current.play()
-      .then(() => {
-        setIsPlaying(true)
-      })
-      .catch(err => {
-        console.error('Error al reproducir audio:', err)
-        setIsPlaying(false)
-      })
   }
-
-  useEffect(() => {
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.pause()
-        audioRef.current = null
-      }
-    }
-  }, [])
 
   const handleModalClose = (withMusic: boolean) => {
     setShowModal(false)
@@ -116,10 +92,7 @@ export default function MusicController() {
   }
 
   const toggleMusic = () => {
-    if (!audioRef.current) {
-      startAudio()
-      return
-    }
+    if (!audioRef.current) return
 
     if (isPlaying) {
       audioRef.current.pause()
@@ -133,6 +106,14 @@ export default function MusicController() {
 
   return (
     <>
+      {/* Elemento de audio en el DOM para mayor compatibilidad móvil */}
+      <audio 
+        ref={audioRef} 
+        src="/Coldplay-Viva-La-Vida-Official.mp3" 
+        loop 
+        preload="auto" 
+      />
+
       {showModal && <MusicModal onClose={handleModalClose} />}
 
       {!showModal && (
