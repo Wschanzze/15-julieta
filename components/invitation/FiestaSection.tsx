@@ -64,7 +64,16 @@ const FIESTA_CARDS = [
     tag: "Vestimenta",
     title: "Dress Code",
     icon: <IconDress />,
-    desc: "Una orientación para tu vestuario en esta noche especial.",
+    desc: (
+      <span className="block text-center space-y-2">
+        <span className="block">
+          <span style={{ color: "#b8962e", fontWeight: "bold", fontSize: "1.15rem" }}>♂</span> Hombres: camisa blanca y traje negro
+        </span>
+        <span className="block">
+          <span style={{ color: "#b8962e", fontWeight: "bold", fontSize: "1.15rem" }}>♀</span> Mujeres: vestidas de negro
+        </span>
+      </span>
+    ),
     btnLabel: "Ver más",
     btnHref: "#",
     leafCorner: "bottom-0 left-0",
@@ -237,13 +246,13 @@ export default function FiestaSection({ onSuggestSong, onSetDietaryRestriction }
                 fontSize: "0.93rem",
                 fontWeight: 400,
                 color: "#4a7a4a",
-                marginBottom: (card.tag === "Playlist" || card.tag === "Información") ? "1rem" : "2rem",
+                marginBottom: (card.tag === "Playlist" || card.tag === "Información") ? "1rem" : (card.tag === "Vestimenta" ? "0" : "2rem"),
               }}
             >
               {card.desc}
             </p>
 
-            {/* Input and Button for Playlist, or Información, or standard Button for others */}
+            {/* Input and Button for Playlist, or Información, or no button for Vestimenta, or standard Button for others */}
             {card.tag === "Playlist" ? (
               <div className="w-full flex flex-col gap-3 mt-auto">
                 <input
@@ -312,6 +321,9 @@ export default function FiestaSection({ onSuggestSong, onSetDietaryRestriction }
                   {isDietConfirmed ? "✓ Confirmado" : "Confirmar"}
                 </button>
               </div>
+            ) : card.tag === "Vestimenta" ? (
+              /* No button for Vestimenta card */
+              null
             ) : (
               <a
                 href={card.btnHref}
